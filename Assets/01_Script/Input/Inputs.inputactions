@@ -2,13 +2,227 @@
     "name": "Inputs",
     "maps": [
         {
-            "name": "Interaction",
-            "id": "b02a652c-a92f-4ea9-beec-82d834d65e26",
+            "name": "PlayerMouvement",
+            "id": "c65a77c5-c2e2-464b-8171-34e8df8ee6fc",
             "actions": [
                 {
-                    "name": "Interact",
+                    "name": "Mouvement",
+                    "type": "PassThrough",
+                    "id": "724fa12b-9f72-43a0-a668-cd70e66ec9d9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD",
+                    "id": "d4285834-b353-43fa-81d1-6a850e64ce39",
+                    "path": "2DVector(mode=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "84945a8b-df3c-4976-8646-3ac3e09cbc10",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "ed7837d5-16f9-4788-964b-65aead71550b",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "8588a230-2649-4bfe-92ed-61e4e951eb82",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "66482586-b8e7-4874-89be-cb289c24affd",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "MouseActions",
+            "id": "57defe5a-cd60-4dfc-bc0e-d3bae3805713",
+            "actions": [
+                {
+                    "name": "PrimaryButton",
+                    "type": "Value",
+                    "id": "2bc0befd-9b8b-4d6c-ab2f-f3b1956270e1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SecondaryButton",
                     "type": "Button",
-                    "id": "f9312cdc-b746-415c-8558-bc4532246503",
+                    "id": "5c074d59-070d-46fe-8fd5-2a2d53bcdcad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseWheel",
+                    "type": "PassThrough",
+                    "id": "327795fe-d6fa-485c-9dd1-9976e716b328",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PrimaryHold",
+                    "type": "Button",
+                    "id": "4549f862-cbf4-4e03-b679-87620b7d4e60",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.2)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7b417bcb-0292-4831-8316-f9b94522088b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2fb74755-8355-468e-bc0b-5f74d2eff6b4",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "461ff72b-ea74-4166-917e-3b625023e195",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "babed978-eea4-4156-b56c-82a89951c172",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "KeyboardActions",
+            "id": "f24fd615-1230-4f06-b021-f00ce678e9a1",
+            "actions": [
+                {
+                    "name": "InteractionAction",
+                    "type": "Button",
+                    "id": "262b0760-231d-4719-917f-ea963e303528",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RelaodAction",
+                    "type": "Button",
+                    "id": "e3d48dc9-3e4c-4517-bfe8-69c70397f60c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InventoryAction",
+                    "type": "Button",
+                    "id": "b7e22006-7c2f-4082-8ee0-ac88067c34c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SkillTreeAction",
+                    "type": "Button",
+                    "id": "5fa677a9-6ff8-4be0-8ed6-947166278548",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MapAction",
+                    "type": "Button",
+                    "id": "fd3c0e1c-b566-4702-bb1e-5d187be2aecd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseItemAction",
+                    "type": "Button",
+                    "id": "757ca6a5-c082-4214-9629-edcb597cc22c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DashAction",
+                    "type": "Button",
+                    "id": "9c88ec5a-f07c-4b05-982e-57f0259966af",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,12 +232,78 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "b3edf147-2f03-46df-9848-031d447afe20",
+                    "id": "69ec5bf9-fbd5-4c75-8983-469627f3566c",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "InteractionAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68278f86-10f6-4d0c-b45f-61aa40ffad6f",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RelaodAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d94a9f96-f867-470c-8925-6cfa0bc6dca3",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventoryAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe160f9e-e01b-4444-b1e0-51fb891ab1d8",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MapAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb87a99f-8b67-4046-8390-6f9442e79baa",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillTreeAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18752465-15c5-45b1-9329-c811c22e3116",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItemAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30b16162-293b-4ea3-b4f5-e204dfd79039",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

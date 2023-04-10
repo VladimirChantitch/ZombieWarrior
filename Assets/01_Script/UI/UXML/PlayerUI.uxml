@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/UXML/GameStyle.uss?fileID=7433441132597879392&amp;guid=ee73f5974c23b00408ab52687ed06ac8&amp;type=3#GameStyle" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="PlayerHUD" style="bottom: -85%; min-height: 15%; flex-direction: row; align-items: stretch; transform-origin: center;">
+            <ui:VisualElement name="Left" style="flex-grow: 1; background-color: rgba(48, 48, 48, 0); min-width: 33%; width: auto; max-width: 33%;">
+                <ui:VisualElement name="LifeBarContainer" style="flex-grow: 0; min-width: 33%; min-height: initial; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 0; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 2px;">
+                    <ui:ProgressBar name="LifeBar" high-value="1" low-value="0.61" style="height: initial; width: initial; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; max-width: 100%; flex-direction: column; justify-content: space-around; align-items: stretch; flex-wrap: nowrap; visibility: visible; overflow: visible; background-color: rgba(128, 128, 128, 255);">
+                        <ui:ProgressBar name="ArmorBar" high-value="1" low-value="0.5" style="height: initial; width: initial; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; max-width: 100%; color: rgb(210, 210, 210); top: auto; background-color: rgba(168, 67, 67, 0.33); flex-grow: 1; justify-content: space-around;" />
+                    </ui:ProgressBar>
+                    <UI.BulletContainer name="BulletContainer" style="margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; padding-left: 3px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; flex-direction: row; flex-wrap: wrap;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Middle" style="flex-grow: 0; min-width: initial; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; padding-bottom: 15px; padding-top: 8px; padding-left: 5px; padding-right: 5px; align-items: flex-start; justify-content: flex-start; position: absolute; height: 56px; width: 625px; top: -57px; left: 0;" />
+            <ui:VisualElement name="Right" style="flex-grow: 1; min-width: 33%; flex-direction: row-reverse; align-items: flex-end; justify-content: flex-start;">
+                <ui:VisualElement name="MoneyContainer" style="flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; background-color: rgba(48, 48, 48, 0); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <ui:VisualElement style="flex-direction: row; background-color: rgba(0, 0, 0, 0.33);">
+                        <ui:VisualElement style="flex-direction: row; flex-grow: 1; align-items: center; -unity-background-image-tint-color: rgb(255, 255, 255); background-image: none;">
+                            <ui:VisualElement name="VisualElement" style="background-image: url(&apos;project://database/Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Axis@3x.png?fileID=2800000&amp;guid=2e27a82b5cc4e4ef98cbef2d0b324aed&amp;type=3#Axis@3x&apos;); height: 38px; width: 50px; margin-left: 1px; margin-right: 3px; margin-top: 1px; margin-bottom: 1px; padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; -unity-background-image-tint-color: rgb(0, 0, 0);" />
+                        </ui:VisualElement>
+                        <ui:Label text="3000000" display-tooltip-when-elided="true" name="MoneyAmount" style="align-items: stretch; justify-content: center; -unity-text-align: middle-left; font-size: 20px; margin-left: 8px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

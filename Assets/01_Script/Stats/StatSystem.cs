@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace stats
+{
+    [CreateAssetMenu(menuName = "Stats/Player")]
+    public class StatSystem
+    {
+        public List<Stat> stats = new List<Stat>()
+        {
+            new Stat(E_Stats.Life, 100, 100),
+            new Stat(E_Stats.Stamina, 100, 100),
+        };
+    }
+}
+

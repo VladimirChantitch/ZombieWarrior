@@ -11,7 +11,7 @@ namespace character.ai
 
         protected override void DoStateLogique()
         {
-            onAnimationPlayed?.Invoke(StringManager.ZB_DEATH_ANIMATION, false, () => active = false);
+            onAnimationPlayed?.Invoke(ResourcesManager.ZB_DEATH_ANIMATION, false, () => active = false);
         }
         protected override AI_States GetNextState()
         {

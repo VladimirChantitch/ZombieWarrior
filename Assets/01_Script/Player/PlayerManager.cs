@@ -18,6 +18,7 @@
 using camera;
 using character.stat;
 using combat;
+using combat.weapon;
 using inputs;
 using savesystem;
 using savesystem.dto;
@@ -51,18 +52,42 @@ namespace player
         [SerializeField] PlayerTakeDamageCollider playerTakeDamageCollider;
 
         [Header("Mouvement")]
-        [SerializeField] MouvementService mouvementService;
+        [SerializeField] PlayerMotionComponent playerMotionComponent;
         [SerializeField] TrailRenderer dashTrail;
 
         [Header("combat")]
-        [SerializeField] WeaponManager weaponManager;
+        [SerializeField] WeaponManager  weaponManager;
 
         [SerializeField] bool canTakeDamage;
 
 
+        Coroutine autoShootCorroutine;
+
+        float currentFireRate;
+
+        void Awake()
+        {
+            playerMotionComponent = GetComponent<PlayerMotionComponent>();
+            if (crossAir == null)
+            {
+                crossAir = GetComponent<CrossAir>();
+            }
+            dashTrail.enabled = false;
+            statComponent = new StatComponent(statSystem.stats);
+
+            crossAir.Init(camera);
+        }
+
         private void Start()
         {
             SubscriteToInputs();
+        }
+
+        public static Vector3 CURRENT_POSITION;
+
+        private void FixedUpdate()
+        {
+            CURRENT_POSITION = transform.position;
         }
 
         private void SubscriteToInputs()
@@ -95,39 +120,15 @@ namespace player
             }
         }
 
-
-
-        Coroutine autoShootCorroutine;
-
-        float currentFireRate;
-
-        void Awake()
-        {
-            mouvementService = GetComponent<MouvementService>();
-            if (crossAir == null)
-            {
-                crossAir = GetComponent<CrossAir>();
-            }
-            dashTrail.enabled = false;
-            statComponent = new StatComponent(statSystem.stats);
-
-            crossAir.Init(camera);
-        }
-
-        private void Start()
-        {
-            InitEvents();
-        }
-
         private void InitEvents()
         {
             crossAir.CrossAirPositionChanged.AddListener(t => { RotatePlayer(t); });
-            playerTakeDamageCollider.onTakeDamage.AddListener(data => { TakeDamage(data); });
+            playerTakeDamageCollider.onTakeDamage += data => { TakeDamage(data); };
 
-            mouvementService.onWalk += () => { animator.StartRunning(); };
-            mouvementService.onStop += () => { animator.StopRunnning(); };
-            mouvementService.onDashStart += () => { Handledash(true); };
-            mouvementService.onDashStop += () => { Handledash(false); };
+            playerMotionComponent.onWalk += () => { animator.StartRunning(); };
+            playerMotionComponent.onStop += () => { animator.StopRunnning(); };
+            playerMotionComponent.onDashStart += () => { Handledash(true); };
+            playerMotionComponent.onDashStop += () => { Handledash(false); };
 
             inputManager.onMove += direction => MovePlayer(direction);
             inputManager.onDashAction += direction => Dash(direction);
@@ -144,7 +145,7 @@ namespace player
         {
             if (direction.x != 0 || direction.y != 0)
             {
-                mouvementService.moveCharacter(direction);
+                playerMotionComponent.moveCharacter(direction);
             }
             else
             {
@@ -154,17 +155,17 @@ namespace player
 
         public void Dash(Vector2 direction)
         {
-            mouvementService.Dash(direction);
+            playerMotionComponent.Dash(direction);
         }
 
         public void RotatePlayer(Transform transform)
         {
-            mouvementService.RotatePlayer(transform);
+            playerMotionComponent.RotatePlayer(transform);
         }
 
         public void Stop()
         {
-            mouvementService.Stop();
+            playerMotionComponent.Stop();
         }
         #endregion
         #region Attack

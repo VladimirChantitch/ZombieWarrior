@@ -165,4 +165,15 @@ public class ResourcesManager : MonoBehaviour
         public VisualTreeAsset Template { get => template; }
     }
     #endregion
+
+    #region Custom Ticks
+    [SerializeField] private float tick = 0.5f;
+    public float Tick { get => tick; }
+    #endregion
+
+    #region NPC 
+    public const string ZB_DEATH_ANIMATION = "Z_01_Dead";
+    public const string ZB_RUN_ANIMATION = "ZombieRun";
+    public const string ZB_ATTACK_ANIMATION = "Z_01_Attack";
+    #endregion
 }

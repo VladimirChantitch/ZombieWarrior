@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 using System;
+using game_manager;
 
 namespace character.ai
 {
@@ -35,7 +36,7 @@ namespace character.ai
         protected abstract AI_States GetNextState();
         protected virtual void InitState()
         {
-            tick = GameManager.Instance.Tick;
+            tick = ResourcesManager.Instance.Tick;
         }
         protected abstract bool IsStillActive(bool isIt = true);
         protected abstract void DoStateLogique();

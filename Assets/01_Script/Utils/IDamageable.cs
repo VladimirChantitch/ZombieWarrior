@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public void TakeDamage(DamageData damageData);
+    public abstract void TakeDamage(DamageData damageData);
 }

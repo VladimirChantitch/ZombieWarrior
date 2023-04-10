@@ -1,6 +1,7 @@
 using character.ai;
 using character.stat;
 using combat;
+using stats;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,34 +10,47 @@ using UnityEngine.AI;
 
 namespace character
 {
-    public class NPCManager : AbstractCharacterManager
+    public class NPCManager : MonoBehaviour, ICharacters, IDamageable
     {
-        [SerializeField] NPCStats nPCStats;
-
         [SerializeField] ZombiTakeDamageCollider zombiTakeDamageCollider;
-        [SerializeField] AnimatorManager animator;
+        [SerializeField] AnimationHelper animator;
         [SerializeField] NPCBrain brain;
 
+        [SerializeField] StatComponent statComponent;
         [SerializeField] StatSystem statSystem;
         [SerializeField] SpriteRenderer spriteRenderer;
 
         public event Action onNpcDied;
         bool isDead;
 
+        [SerializeField] string _name;
+        [SerializeField] string _description;
+
+        IDamageable iDamageable = null; 
+
+        public string Name { get => _name; set => _name = value; }
+        public string Description { get => _description; set => _description = value; }
+
         private void Awake()
         {
-            zombiTakeDamageCollider.onTakeDamage.AddListener(data => { TakeDamage(data); });
+            iDamageable = (this as IDamageable);
+            zombiTakeDamageCollider.onTakeDamage += data => { iDamageable.TakeDamage(data); };
             brain.onAnimationPlayed.AddListener((s, b, a) => HandleAnimationEvent(s, b, a));
-            statSystem = new StatSystem(nPCStats.characterStats);
+            statComponent = new StatComponent(statSystem.stats);
         }
 
-        protected override void TakeDamage(DamageData damage)
+        private void HandleAnimationEvent(string s, bool b, Action a)
+        {
+            animator.PlayTargetAnimation(s, a);
+        }
+
+        void IDamageable.TakeDamage(DamageData damageData)
         {
             if (isDead) return;
 
-            statSystem.AddOrRemoveStat(StatTypes.Life, damage.DamageAmount);
+            statComponent.AddOrRemoveStat(E_Stats.Life, damageData.DamageAmount);
 
-            if(statSystem.GetStatValue(StatTypes.Life) <= 0)
+            if (statComponent.GetStatValue(E_Stats.Life) <= 0)
             {
                 isDead = true;
                 brain.HandleState(AI_States.Dying);
@@ -44,11 +58,6 @@ namespace character
                 zombiTakeDamageCollider.CloseCollider();
                 spriteRenderer.sortingOrder = -1;
             }
-        }
-
-        private void HandleAnimationEvent(string s, bool b, Action a)
-        {
-            animator.PlayTargetAnimation(s, a);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace combat
             if (collision.gameObject.layer == targetLayer)
             {
                 TakeDamageCollider takeDamageCollider = collision.GetComponent<TakeDamageCollider>();
-                onInflictDamage?.Invoke(this, damage, takeDamageCollider);
+                InflictDamage(takeDamageCollider);
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace combat
         public DamageData damage { get; protected set; }
         public Rigidbody2D Rb { get => rb; }
 
-        [HideInInspector] public InflictDamageEvent onInflictDamage = new InflictDamageEvent();
+        public event Action<AbstractInflictDamageCollider, DamageData, TakeDamageCollider> onInflictDamage;
 
         public virtual void OpenCollider()
         {
@@ -30,6 +31,11 @@ namespace combat
         public virtual void CloseCollider()
         {
             collider2D.enabled = false;
+        }
+
+        protected void InflictDamage(TakeDamageCollider takeDamageCollider)
+        {
+            onInflictDamage?.Invoke(this, damage, takeDamageCollider);
         }
     }
 }

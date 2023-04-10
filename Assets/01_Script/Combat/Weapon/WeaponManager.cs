@@ -45,7 +45,7 @@ namespace combat.weapon
                 if (bulletColliders[poolCounter] == null)
                 {
                     bulletColliders[poolCounter] = Instantiate(currentWeapon.DefaultBullet.BulletPrefab, currentEquippedWeapon.ShootTransforms[0]).GetComponent<BulletCollider>();
-                    bulletColliders[poolCounter].onInflictDamage.AddListener((bullet, data, target) => HandleInflictDamage(bullet, data, target));
+                    bulletColliders[poolCounter].onInflictDamage += (bullet, data, target) => HandleInflictDamage(bullet, data, target);
                     bulletColliders[poolCounter].onTimeOut.AddListener((bullet) => ResetBullet(bullet));
                     bulletColliders[poolCounter].Rb.gravityScale = 0;
                 }

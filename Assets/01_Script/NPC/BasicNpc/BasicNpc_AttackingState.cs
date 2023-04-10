@@ -16,7 +16,7 @@ namespace character.ai
         {
             colliders.ForEach(c =>
             {
-                c.onInflictDamage.AddListener((collider, data, target) =>
+                c.onInflictDamage += (collider, data, target) =>
                 {
                     target.TakeDamage(data);
 
@@ -24,7 +24,7 @@ namespace character.ai
                     {
                         c.CloseCollider();
                     });
-                });
+                };
 
                 c.SetDamageData(new DamageData(damageAmount));
             });
@@ -34,7 +34,7 @@ namespace character.ai
         {
             base.InitState();
             isActive = true;
-            onAnimationPlayed?.Invoke(StringManager.ZB_ATTACK_ANIMATION, false, () => EndAttack());
+            onAnimationPlayed?.Invoke(ResourcesManager.ZB_ATTACK_ANIMATION, false, () => EndAttack());
             colliders.ForEach(c =>
             {
                 c.OpenCollider();

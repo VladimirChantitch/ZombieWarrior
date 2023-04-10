@@ -1,3 +1,4 @@
+using player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,12 +21,12 @@ namespace character.ai
             navMeshAgent.isStopped = false;
             isActive = true;
             zombieTransform = navMeshAgent.transform;
-            onAnimationPlayed?.Invoke(StringManager.ZB_RUN_ANIMATION, true, () => { });
+            onAnimationPlayed?.Invoke(ResourcesManager.ZB_RUN_ANIMATION, true, () => { });
         }
 
         protected override void DoStateLogique()
         {
-            navMeshAgent.SetDestination(GameManager.Instance.PlayerTransform.position);
+            navMeshAgent.SetDestination(PlayerManager.CURRENT_POSITION);
             RotateTowardWalkDirection();
         }
 
@@ -36,7 +37,7 @@ namespace character.ai
 
         protected override bool IsStillActive(bool isIt = true)
         {
-            if (Vector3.Distance(GameManager.Instance.PlayerTransform.position, transform.position) <= navMeshAgent.stoppingDistance + 0.15)
+            if (Vector3.Distance(PlayerManager.CURRENT_POSITION, transform.position) <= navMeshAgent.stoppingDistance + 0.15)
             {
                 navMeshAgent.isStopped = true;
                 isActive = false;

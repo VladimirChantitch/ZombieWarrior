@@ -23,7 +23,7 @@ namespace combat
             {
                 TakeDamageCollider takeDamageCollider = collision.GetComponent<TakeDamageCollider>();
                 Instantiate(destructionParticles, transform.position, transform.rotation);
-                onInflictDamage?.Invoke(this, damage, takeDamageCollider);
+                InflictDamage(takeDamageCollider);
             }
             else if (collision.gameObject.layer == 31)
             {

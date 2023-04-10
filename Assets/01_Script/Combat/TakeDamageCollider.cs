@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace combat
     [RequireComponent(typeof(BoxCollider2D))]
     public class TakeDamageCollider : MonoBehaviour
     {
-        [HideInInspector] public TakeDamageEvent onTakeDamage = new TakeDamageEvent();
+        public event Action<DamageData> onTakeDamage;
         [SerializeField] BoxCollider2D collider2D;
 
         private void Awake()

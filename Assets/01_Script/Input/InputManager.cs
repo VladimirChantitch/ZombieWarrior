@@ -73,36 +73,31 @@ namespace inputs
 
         private void BindInputs()
         {
-            if (inputs == null)
+            inputs.PlayerMouvement.Mouvement.performed += i => direction = i.ReadValue<Vector2>();
+
+            inputs.MouseActions.PrimaryButton.performed += i => onPrimaryAction?.Invoke();
+            inputs.MouseActions.PrimaryHold.performed += i => onHoldPrimary?.Invoke();
+            inputs.MouseActions.PrimaryHold.canceled += i => onRealeasePrimary?.Invoke();
+            inputs.MouseActions.SecondaryButton.performed += i => onScondaryAction?.Invoke();
+            inputs.MouseActions.MouseWheel.performed += i =>
             {
-                inputs = new Inputs();
-
-                inputs.PlayerMouvement.Mouvement.performed += i => direction = i.ReadValue<Vector2>();
-
-                inputs.MouseActions.PrimaryButton.performed += i => onPrimaryAction?.Invoke();
-                inputs.MouseActions.PrimaryHold.performed += i => onHoldPrimary?.Invoke();
-                inputs.MouseActions.PrimaryHold.canceled += i => onRealeasePrimary?.Invoke();
-                inputs.MouseActions.SecondaryButton.performed += i => onScondaryAction?.Invoke();
-                inputs.MouseActions.MouseWheel.performed += i =>
+                if (i.ReadValue<float>() > 0)
                 {
-                    if (i.ReadValue<float>() > 0)
-                    {
-                        onForwardAction?.Invoke();
-                    }
-                    else if (i.ReadValue<float>() < 0)
-                    {
-                        onBackwardAction?.Invoke();
-                    }
-                };
+                    onForwardAction?.Invoke();
+                }
+                else if (i.ReadValue<float>() < 0)
+                {
+                    onBackwardAction?.Invoke();
+                }
+            };
 
-                inputs.KeyboardActions.InteractionAction.performed += i => onInteractionAction?.Invoke();
-                inputs.KeyboardActions.RelaodAction.performed += i => onReloadAction?.Invoke();
-                inputs.KeyboardActions.InventoryAction.performed += i => onInventoryAction?.Invoke();
-                inputs.KeyboardActions.SkillTreeAction.performed += i => onSkillTreeAction?.Invoke();
-                inputs.KeyboardActions.MapAction.performed += i => onMapAction?.Invoke();
-                inputs.KeyboardActions.UseItemAction.performed += i => onUseItemAction?.Invoke();
-                inputs.KeyboardActions.DashAction.performed += i => onDashAction?.Invoke(direction);
-            }
+            inputs.KeyboardActions.InteractionAction.performed += i => onInteractionAction?.Invoke();
+            inputs.KeyboardActions.RelaodAction.performed += i => onReloadAction?.Invoke();
+            inputs.KeyboardActions.InventoryAction.performed += i => onInventoryAction?.Invoke();
+            inputs.KeyboardActions.SkillTreeAction.performed += i => onSkillTreeAction?.Invoke();
+            inputs.KeyboardActions.MapAction.performed += i => onMapAction?.Invoke();
+            inputs.KeyboardActions.UseItemAction.performed += i => onUseItemAction?.Invoke();
+            inputs.KeyboardActions.DashAction.performed += i => onDashAction?.Invoke(direction);        
         }
 
         void FixedUpdate()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace stats
 {
-    [CreateAssetMenu(menuName = "Stats/Player")]
+    [CreateAssetMenu(menuName = "Stats/Character")]
     public class StatSystem : ScriptableObject
     {
         public List<Stat> stats = new List<Stat>()

@@ -81,6 +81,7 @@ namespace player
         private void Start()
         {
             SubscriteToInputs();
+            InitEvents();
         }
 
         public static Vector3 CURRENT_POSITION;
@@ -95,11 +96,31 @@ namespace player
             if (inputManager != null)
             {
                 inputManager.onInteractPressed += () => OnInteract();
+
+                inputManager.onMove += direction => MovePlayer(direction);
+                inputManager.onDashAction += direction => Dash(direction);
+                inputManager.onPrimaryAction += () => Shoot();
+                inputManager.onRealeasePrimary += () => ToggleOnOffAutoShoot(false);
+                inputManager.onHoldPrimary += () => ToggleOnOffAutoShoot(true);
+
+                weaponManager.onFireRateChanged += (f) => currentFireRate = f;
             }
             else
             {
                 Debug.Log($"<color=red> NO INPUT MANAGER IN PLAYER MANAGER</color>");
             }
+        }
+
+        private void InitEvents()
+        {
+            crossAir.CrossAirPositionChanged += t => { RotatePlayer(t); };
+            playerTakeDamageCollider.onTakeDamage += data => { TakeDamage(data); };
+
+            playerMotionComponent.onWalk += () => { animator.StartRunning(); };
+            playerMotionComponent.onStop += () => { animator.StopRunnning(); };
+            playerMotionComponent.onDashStart += () => { Handledash(true); };
+            playerMotionComponent.onDashStop += () => { Handledash(false); };
+
         }
 
         private void OnInteract()
@@ -120,25 +141,6 @@ namespace player
             }
         }
 
-        private void InitEvents()
-        {
-            crossAir.CrossAirPositionChanged.AddListener(t => { RotatePlayer(t); });
-            playerTakeDamageCollider.onTakeDamage += data => { TakeDamage(data); };
-
-            playerMotionComponent.onWalk += () => { animator.StartRunning(); };
-            playerMotionComponent.onStop += () => { animator.StopRunnning(); };
-            playerMotionComponent.onDashStart += () => { Handledash(true); };
-            playerMotionComponent.onDashStop += () => { Handledash(false); };
-
-            inputManager.onMove += direction => MovePlayer(direction);
-            inputManager.onDashAction += direction => Dash(direction);
-            inputManager.onPrimaryAction += () => Shoot();
-            inputManager.onRealeasePrimary += () => ToggleOnOffAutoShoot(false);
-            inputManager.onHoldPrimary += () => ToggleOnOffAutoShoot(true);
-
-            weaponManager.onFireRateChanged += (f) => currentFireRate = f;
-
-        }
 
         #region motion
         private void MovePlayer(Vector2 direction)

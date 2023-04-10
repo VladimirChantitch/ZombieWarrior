@@ -100,7 +100,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1491
+      x: 1512
       y: 1512
       width: 372
       height: 245
@@ -490,7 +490,7 @@ ScriptedImporter:
     - {x: 26, y: 27}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1491, y: 1512}
+    uvTransform: {x: 1512, y: 1512}
     spritePosition: {x: 544, y: 965}
   - name: HeadColor
     originalName: 
@@ -880,7 +880,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -386, y: 2141}
-    spritePosition: {x: 544, y: 965}
+    spritePosition: {x: 154, y: 256}
   - name: body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2102,7 +2102,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 255, y: 1061}
-    spritePosition: {x: 415, y: 1008}
+    spritePosition: {x: 0, y: 0}
   - name: Arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4034,7 +4034,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -436, y: 1732}
-    spritePosition: {x: 440, y: 638}
+    spritePosition: {x: 0, y: 0}
   - name: Feet
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5050,7 +5050,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 741}
-    spritePosition: {x: 0, y: 1027}
+    spritePosition: {x: -21, y: 256}
   characterData:
     bones:
     - name: root
@@ -5249,7 +5249,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: c6fc8a295f0e5e645a1a595555a5943e
     layerID: 0
-    mosaicPosition: {x: 1491, y: 1512}
+    mosaicPosition: {x: 1512, y: 1512}
     flatten: 0
     isImported: 1
     isVisible: 1

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18171c62f9ff35c45a8b8e4630c8859e, type: 3}
-  m_Name: MainPlayerStats
+  m_Script: {fileID: 11500000, guid: 5001442f81a9f4945b9642d03d5a6770, type: 3}
+  m_Name: BasicStats
   m_EditorClassIdentifier: 
-  characterStats:
+  stats:
   - statTypes: 0
     amount: 100
     maxAmount: 100

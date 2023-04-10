@@ -12,6 +12,9 @@ namespace character
 {
     public class NPCManager : MonoBehaviour, ICharacters, IDamageable
     {
+        public string Name { get => _name; set => _name = value; }
+        public string Description { get => _description; set => _description = value; }
+
         [SerializeField] ZombiTakeDamageCollider zombiTakeDamageCollider;
         [SerializeField] AnimationHelper animator;
         [SerializeField] NPCBrain brain;
@@ -27,9 +30,6 @@ namespace character
         [SerializeField] string _description;
 
         IDamageable iDamageable = null; 
-
-        public string Name { get => _name; set => _name = value; }
-        public string Description { get => _description; set => _description = value; }
 
         private void Awake()
         {

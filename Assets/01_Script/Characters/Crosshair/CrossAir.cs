@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class CrossAir : MonoBehaviour
 {
-    public UnityEvent<Transform> CrossAirPositionChanged;
+    public event Action<Transform> CrossAirPositionChanged;
     Camera camera;
 
     public void Init(Camera camera)

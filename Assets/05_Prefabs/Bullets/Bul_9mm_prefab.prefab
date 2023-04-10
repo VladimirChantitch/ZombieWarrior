@@ -473,7 +473,7 @@ MonoBehaviour:
   onTimeOut:
     m_PersistentCalls:
       m_Calls: []
-  destructionParticles: {fileID: 8225680122404276590, guid: af0fef60f269fb64d8c31e53481c4534, type: 3}
+  destructionParticles: {fileID: 8225680122404276590, guid: e932ce20777d30e469ba94321ec80fab, type: 3}
 --- !u!50 &5668934270475863444
 Rigidbody2D:
   serializedVersion: 4

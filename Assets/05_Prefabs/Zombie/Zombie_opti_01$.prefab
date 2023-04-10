@@ -605,11 +605,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e1d07da9ec3e14cb7d5eee897d30f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nPCStats: {fileID: 11400000, guid: a77078d96be7fce4086cb1af9403dbc3, type: 2}
   zombiTakeDamageCollider: {fileID: 7104067278992446541}
   animator: {fileID: 7104067279070000942}
   brain: {fileID: 176416559757493962}
+  statComponent:
+    characterStats: []
+  statSystem: {fileID: 11400000, guid: 272b729a36a290a4e88beb255ef67be5, type: 2}
   spriteRenderer: {fileID: 7104067279070000941}
+  _name: b
+  _description: b
 --- !u!195 &4161725289819944308
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -762,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9032991506600559710, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9032991506600559710, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_SortingOrder
@@ -774,19 +778,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9032991506600559711, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.17648411
+      value: 0.17648435
       objectReference: {fileID: 0}
     - target: {fileID: 9032991506600559711, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.7261503
+      value: -0.72615075
       objectReference: {fileID: 0}
     - target: {fileID: 9032991506600559711, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 3.365294
+      value: 3.365291
       objectReference: {fileID: 0}
     - target: {fileID: 9032991506600559711, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 2.931243
+      value: 2.9312427
       objectReference: {fileID: 0}
     - target: {fileID: 9032991507732659963, guid: 0d017eceb6c83e844ae0304b6d300605, type: 3}
       propertyPath: m_LocalPosition.x

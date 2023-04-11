@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/leader-board.uss?fileID=7433441132597879392&amp;guid=2d00e0aa5c062df4fa3c3daa113d450a&amp;type=3#leader-board" />
+    <ui:VisualElement style="height: 278px; flex-grow: 1;">
+        <ui:VisualElement style="height: 569px; width: 2100px; flex-direction: row; flex-shrink: 1; justify-content: center; flex-grow: 1; margin-top: 63px;">
+            <ui:VisualElement class="container" style="flex-direction: column-reverse; height: 150px; width: 130px; background-color: rgb(112, 123, 112); margin-top: 50px; justify-content: flex-end;">
+                <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgba(255, 255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                    <ui:Label text="2" display-tooltip-when-elided="true" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgba(255, 255, 255, 255); color: rgba(0, 0, 0, 255); height: 43px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="height: 200px; width: 130px; background-color: rgb(156, 151, 151);">
+                <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                    <ui:Label text="1" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="height: 100px; width: 130px; background-color: rgb(221, 93, 93); margin-top: 101px;">
+                <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                    <ui:Label text="3" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="height: 1640px;">
+            <ui:VisualElement />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

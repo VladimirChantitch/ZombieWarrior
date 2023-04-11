@@ -39,6 +39,23 @@ namespace savesystem
         {
 
         }
+
+#if UNITY_EDITOR
+        [SerializeField] bool deleteDB;
+        private void Update()
+        {
+            if (deleteDB)
+            {
+                deleteDB = false;
+                removeAllInDb();
+            }
+        }
+
+        void removeAllInDb()
+        {
+            realm.RemoveAll();
+        }
+#endif
     }
 }
 

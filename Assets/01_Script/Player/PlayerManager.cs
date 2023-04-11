@@ -130,15 +130,16 @@ namespace player
 
         public Dto Save()
         {
-            return new PlayerDto() { Name = Name };
+            //return new PlayerDto() { Name = Name };
+            return null;
         }
 
         public void Load(Dto dto)
         {
-            if (dto is PlayerDto playerDto)
-            {
-                Name = playerDto.Name;
-            }
+            //if (dto is PlayerDto playerDto)
+            //{
+            //    Name = playerDto.Name;
+            //}
         }
 
 

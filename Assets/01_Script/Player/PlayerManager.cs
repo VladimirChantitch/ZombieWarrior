@@ -20,11 +20,14 @@ using character.stat;
 using combat;
 using combat.weapon;
 using inputs;
+using Realms;
 using savesystem;
 using savesystem.dto;
+using savesystem.realm;
 using stats;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace player
@@ -128,18 +131,17 @@ namespace player
             Debug.Log("Interact");
         }
 
-        public Dto Save()
+        public void Save()
         {
-            //return new PlayerDto() { Name = Name };
-            return null;
+            //TODO
         }
 
-        public void Load(Dto dto)
+        public void Load(RealmObject realmObject)
         {
-            //if (dto is PlayerDto playerDto)
-            //{
-            //    Name = playerDto.Name;
-            //}
+            if(realmObject is PlayerRealm playerRealm)
+            {
+                this.Name = playerRealm.Name;
+            }
         }
 
 

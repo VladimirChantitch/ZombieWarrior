@@ -37,7 +37,11 @@ namespace savesystem
 
         internal void SaveGame()
         {
-
+            List<UnityEngine.Object> savables = FindObjectsOfType<UnityEngine.Object>().Where(o => o is ISavable).ToList();
+            savables.ForEach(s =>
+            {
+                //s.Save(); //TODO
+            });
         }
 
 #if UNITY_EDITOR
@@ -53,7 +57,10 @@ namespace savesystem
 
         void removeAllInDb()
         {
-            realm.RemoveAll();
+            realm.Write(() =>
+            {
+                realm.RemoveAll();
+            });
         }
 #endif
     }

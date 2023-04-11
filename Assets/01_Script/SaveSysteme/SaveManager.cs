@@ -17,11 +17,12 @@ namespace savesystem
     public class SaveManager : MonoBehaviour
     {
         Realm realm;
-        PlayerRealm playerRealm;
+        public PlayerCrud playerCrud { get; private set; }
 
         private void OnEnable()
         {
             realm = Realm.GetInstance();
+            playerCrud = new PlayerCrud(realm);
         }
 
         private void OnDisable()
@@ -34,28 +35,9 @@ namespace savesystem
 
         }
 
-        /// <summary>
-        /// Generates one and only one file that contains all the save data of all your ISavable In the scene
-        /// </summary>
         internal void SaveGame()
         {
-            List<UnityEngine.Object> savables = FindObjectsOfType<UnityEngine.Object>().Where(o => o is ISavable).ToList();
 
-        }
-
-        private void GenerateJsonString()
-        {
-
-        }
-
-        public void DestroySaveFile()
-        {
-
-        }
-
-        public void SetHighScore(string PlayerName, int highScore)
-        {
-            if (playerRealm == null) playerRealm = realm.Find<PlayerRealm>(PlayerName);
         }
     }
 }

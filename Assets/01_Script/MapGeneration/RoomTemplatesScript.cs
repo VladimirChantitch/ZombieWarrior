@@ -25,6 +25,22 @@ public class RoomTemplatesScript : MonoBehaviour
     [SerializeField]
     private int minRoomCount;
 
+    #region singleton
+    public static RoomTemplatesScript Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(Instance);
+            Instance = this;
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+    #endregion
 
     private void Start()
     {

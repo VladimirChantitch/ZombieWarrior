@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
->
-    
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/02_Templates/main.uss?fileID=7433441132597879392&amp;guid=2f1b6ac39304b614592e9decf9ddb8af&amp;type=3#main" />
+    <UI.SignIn.SignInElement class="menuBG">
+        <ui:VisualElement name="nameContainer">
+            <ui:TextField picking-mode="Ignore" value="filler text" text="filler text" name="tf_name" />
+        </ui:VisualElement>
+        <ui:VisualElement name="buttonsConainer" class="buttonBG" style="flex-direction: row; align-items: center;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" class="small_buton" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" class="small_buton" />
+        </ui:VisualElement>
+    </UI.SignIn.SignInElement>
+</ui:UXML>

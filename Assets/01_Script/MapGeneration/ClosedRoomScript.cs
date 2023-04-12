@@ -18,7 +18,7 @@ public class ClosedRoomScript : MonoBehaviour
     {
         if (other.CompareTag("SpawnPoint"))
         {
-            Destroy(gameObject.transform.parent.gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

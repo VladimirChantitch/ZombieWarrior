@@ -12,17 +12,17 @@ public class RoomSpawner : MonoBehaviour
     // LEFT --> need RIGHT door
     // RIGHT --> need LEFT door
 
-    private RoomTemplatesScript templates;
+    private RoomGenerationManager roomManager;
     private int rdm;
     private bool hasSpawned = false;
 
-    private void Start()
+    private void Awake()
     {
-        templates = RoomTemplatesScript.Instance;
+        roomManager = GetComponentInParent<RoomScript>().roomManager;
         Invoke("Spawn", 0.1f);
     }
 
-    private void Spawn()
+    public void Spawn()
     {
         if (!hasSpawned)
         {
@@ -30,23 +30,23 @@ public class RoomSpawner : MonoBehaviour
             {
                 case Direction.TOP:
                     //Need to spawn room with BOTTOM door
-                    rdm = Random.Range(0, templates.bottomRooms.Length);
-                    Instantiate(templates.bottomRooms[rdm], transform.position, templates.bottomRooms[rdm].transform.rotation);
+                    rdm = Random.Range(0, roomManager.bottomRooms.Length);
+                    roomManager.addRoom(roomManager.bottomRooms[rdm], transform.position);
                     break;
                 case Direction.RIGHT:
                     //Need to spawn room with LEFT door
-                    rdm = Random.Range(0, templates.leftRooms.Length);
-                    Instantiate(templates.leftRooms[rdm], transform.position, templates.leftRooms[rdm].transform.rotation);
+                    rdm = Random.Range(0, roomManager.leftRooms.Length);
+                    roomManager.addRoom(roomManager.leftRooms[rdm], transform.position);
                     break;
                 case Direction.BOTTOM:
                     //Need to spawn room with TOP door
-                    rdm = Random.Range(0, templates.topRooms.Length);
-                    Instantiate(templates.topRooms[rdm], transform.position, templates.topRooms[rdm].transform.rotation);
+                    rdm = Random.Range(0, roomManager.topRooms.Length);
+                    roomManager.addRoom(roomManager.topRooms[rdm], transform.position);
                     break;
                 case Direction.LEFT:
                     //Need to spawn room with RIGHT door
-                    rdm = Random.Range(0, templates.rightRooms.Length);
-                    Instantiate(templates.rightRooms[rdm], transform.position, templates.rightRooms[rdm].transform.rotation);
+                    rdm = Random.Range(0, roomManager.rightRooms.Length);
+                    roomManager.addRoom(roomManager.rightRooms[rdm], transform.position);
                     break;
             }
             hasSpawned = true;
@@ -61,7 +61,7 @@ public class RoomSpawner : MonoBehaviour
             {
                 if (!other.GetComponent<RoomSpawner>().hasSpawned && !hasSpawned)
                 {
-                    Instantiate(templates.closedRoom, transform.position, templates.closedRoom.transform.rotation);
+                    Instantiate(roomManager.closedRoom, transform.position, roomManager.closedRoom.transform.rotation);
                 }
                 hasSpawned = true;
                 Destroy(gameObject);
@@ -71,7 +71,7 @@ public class RoomSpawner : MonoBehaviour
                 if (!hasSpawned)
                 {
                     hasSpawned = true;
-                    RepareDoorOnWalls(other.GetComponent<RoomScript>().directions);
+                    RepareDoorOnWalls(other.GetComponent<RoomScript>().GetDirections());
                 }
             }
         }
@@ -110,24 +110,24 @@ public class RoomSpawner : MonoBehaviour
 
     void ReplaceRoom()
     {
-        GameObject parentRoom = gameObject.transform.parent.gameObject;
-        List<Direction> roomDirs = parentRoom.GetComponentInChildren<RoomScript>().directions;
+        GameObject parentRoom = transform.parent.gameObject;
+        List<Direction> roomDirs = GetComponentInParent<RoomScript>().GetDirections();
         roomDirs.Remove(openingDirection);
-        GameObject[] templatesRoomSide = templates.topRooms;
+        GameObject[] templatesRoomSide = new GameObject[0];
 
         switch (roomDirs[0])
         {
             case Direction.TOP:
-                templatesRoomSide = templates.topRooms;
+                templatesRoomSide = roomManager.topRooms;
                 break;
             case Direction.BOTTOM:
-                templatesRoomSide = templates.bottomRooms;
+                templatesRoomSide = roomManager.bottomRooms;
                 break;
             case Direction.LEFT:
-                templatesRoomSide = templates.leftRooms;
+                templatesRoomSide = roomManager.leftRooms;
                 break;
             case Direction.RIGHT:
-                templatesRoomSide = templates.rightRooms;
+                templatesRoomSide = roomManager.rightRooms;
                 break;
         }
 
@@ -148,6 +148,7 @@ public class RoomSpawner : MonoBehaviour
                 break;
             }
         }
+        roomManager.CleanRoomList(parentRoom);
         Destroy(parentRoom);
     }
 }

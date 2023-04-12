@@ -16,10 +16,13 @@
  */
 
 
+using savesystem.realm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using ui.template;
+using UI.Connection;
+using UI.SignIn;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -34,6 +37,7 @@ namespace ui
 
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
+        public event Action<string> onPlayerSignIn;
 
         public void Awake()
         {
@@ -67,6 +71,12 @@ namespace ui
                     case LooseMenuElement looseMenuElement:
                         InitLooseMenu(looseMenuElement);
                         break;
+                    case SignInElement signInElement:
+                        InitSignMenu(signInElement);
+                        break;
+                    case ConnectionElement connectionElement:
+                        InitConnectionMenu(connectionElement);
+                        break;
                 }
             }
             else
@@ -91,7 +101,35 @@ namespace ui
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
             startMenuElement.Init();
-            startMenuElement.onStartButton += () => onStartGame?.Invoke(GameScene.Main_scene);
+            startMenuElement.onStartButton += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.NewUserScreen);
+                ChangeUITemplate();
+            };
+
+            startMenuElement.onLoadButton += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.ConnectionScreen);
+                ChangeUITemplate();
+            };
+        }
+
+        private void InitSignMenu(SignInElement signInElement)
+        {
+            signInElement.Init();
+            signInElement.onCancel += () => {
+                ResourcesManager.Instance.ChangeSubState(GameState.None);
+                ChangeUITemplate();
+            };
+            signInElement.onNewPlayerSignIn += (player_name) =>
+            {
+                onPlayerSignIn?.Invoke(player_name);
+            };
+        }
+
+        private void InitConnectionMenu(ConnectionElement connectionElement)
+        {
+            connectionElement.Init(PlayerCrud.Instance.GetAllPlayers());
         }
     }
 }

@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ui.template;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UI.SignIn
 {
-    public class SignInElement : VisualElement
+    public class SignInElement : AbstractTemplateElement
     {
         public new class UxmlFactory : UxmlFactory<SignInElement, SignInElement.UxmlTraits> { }
 
@@ -24,8 +25,12 @@ namespace UI.SignIn
 
         private void BindButtons()
         {
-            btn_cancel.clicked += () => onCancel.Invoke();
-            btn_validate.clicked += () => onNewPlayerSignIn.Invoke(tf_name.text);
+            tf_name = this.Q<TextField>("tf_name");
+            btn_validate = this.Q<Button>("btn_validate");
+            btn_cancel = this.Q<Button>("btn_cancel");
+
+            btn_cancel.clicked += () => onCancel?.Invoke();
+            btn_validate.clicked += () => onNewPlayerSignIn?.Invoke(tf_name.text);
         }
     }
 }

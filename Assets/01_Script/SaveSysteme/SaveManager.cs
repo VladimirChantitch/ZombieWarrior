@@ -17,12 +17,11 @@ namespace savesystem
     public class SaveManager : MonoBehaviour
     {
         Realm realm;
-        public PlayerCrud playerCrud { get; private set; }
 
         private void OnEnable()
         {
             realm = Realm.GetInstance();
-            playerCrud = new PlayerCrud(realm);
+            new PlayerCrud(realm);
         }
 
         private void OnDisable()

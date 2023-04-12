@@ -8,6 +8,7 @@ using player;
 using UnityEngine.SceneManagement;
 using scene;
 using savesystem;
+using savesystem.realm;
 
 namespace game_manager
 {
@@ -61,6 +62,11 @@ namespace game_manager
             {
                 uiManager.onStartGame += scene => LoadScene(scene);
                 uiManager.onBackToMain += scene => LoadScene(scene);
+                uiManager.onPlayerSignIn += player_name =>
+                {
+                    PlayerCrud.Instance.CreateNewPlayer(player_name);
+                    LoadScene(GameScene.Main_scene);
+                };              
             }
         }
         #endregion

@@ -9,8 +9,11 @@ namespace savesystem.realm
 {
     public class PlayerCrud
     {
+        public static PlayerCrud Instance { get; private set; }
+
         public PlayerCrud(Realm realm)
         {
+            Instance = this;
             this.realm = realm;
         }
 

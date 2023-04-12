@@ -209,6 +209,9 @@ MonoBehaviour:
     template: {fileID: 9197481963319205126, guid: 766fa2951fec72445981c8ffa5898bfd, type: 3}
   - gameState: 6
     template: {fileID: 9197481963319205126, guid: ab682100ad0b8d14daab6109530d127a, type: 3}
+  templateContainers:
+  - name: connectionButton
+    template: {fileID: 9197481963319205126, guid: 05bd3b7d0f13324478d0b05b68803a15, type: 3}
   tick: 0.5
 --- !u!4 &285853165
 Transform:

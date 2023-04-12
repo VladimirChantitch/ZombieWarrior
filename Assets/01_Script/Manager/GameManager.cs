@@ -38,11 +38,29 @@ namespace game_manager
 
         private void Start()
         {
+            HandleCookieData();
+
             BindUI_Events();
             BindPlayer_Events();
             BindSound_Events();
 
             ChangeTemplate();
+        }
+
+        private void HandleCookieData()
+        {
+            switch (sceneState)
+            {
+                case GameScene.None_scene:
+                    break;
+                case GameScene.Start_scene:
+                    break;
+                case GameScene.Main_scene:
+                    playerManager.Name = SeesionCookie.currentPlayerName;
+                    break;
+                case GameScene.End_Scene:
+                    break;
+            }
         }
 
         #region EventBindings
@@ -65,8 +83,14 @@ namespace game_manager
                 uiManager.onPlayerSignIn += player_name =>
                 {
                     PlayerCrud.Instance.CreateNewPlayer(player_name);
+                    SeesionCookie.currentPlayerName = player_name;
                     LoadScene(GameScene.Main_scene);
-                };              
+                };
+                uiManager.onPlayerConnection += (playerName) =>
+                {
+                    SeesionCookie.currentPlayerName = playerName;
+                    LoadScene(GameScene.Main_scene);
+                };
             }
         }
         #endregion

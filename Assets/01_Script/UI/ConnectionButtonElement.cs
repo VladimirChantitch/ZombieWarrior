@@ -16,12 +16,19 @@ namespace UI.Connection
 
         string playerName;
 
+        Label l_playerName;
+        Label l_highScore;
+
         public void Init(PlayerRealm playerRealm)
         {
+            l_highScore = this.Q<Label>("l_highScore");
+            l_playerName = this.Q<Label>("l_playerName");
+
             clicked += () => onSelected?.Invoke(playerName);
             this.playerName = playerRealm.Name;
 
-            text = new StringBuilder(playerName).Append("                         ::::").Append(playerRealm.highScore).ToString();
+            l_playerName.text = playerName;
+            l_highScore.text = playerRealm.highScore.ToString();
         }
     }
 }

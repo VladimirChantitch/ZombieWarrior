@@ -3,9 +3,15 @@
     <Style src="project://database/Assets/02_Templates/main.uss?fileID=7433441132597879392&amp;guid=2f1b6ac39304b614592e9decf9ddb8af&amp;type=3#main" />
     <UI.Connection.ConnectionElement class="menuBG">
         <ui:VisualElement name="MainContainer" style="flex-grow: 1; margin-left: 10%; margin-right: 10%; margin-top: 1%; margin-bottom: 1%; padding-left: 10%; padding-right: 10%; padding-top: 1%; padding-bottom: 1%;">
-            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="ScrollView" style="align-items: stretch; flex-grow: 1;">
-                <ui:Instance template="UI_ConnectionButton" name="UI_ConnectionButton" />
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="ScrollView" style="align-items: stretch; flex-grow: 1; padding-left: 1%; padding-right: 1%; padding-top: 1%; padding-bottom: 1%;">
+                <ui:Instance template="UI_ConnectionButton" name="UI_ConnectionButton" style="flex-grow: 1;">
+                    <AttributeOverrides element-name="l_playerName" text="Name" />
+                    <AttributeOverrides element-name="l_highScore" text="HighScore" />
+                </ui:Instance>
             </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="buttonsContaine">
+            <ui:Button text="Cancel" display-tooltip-when-elided="true" name="btn_cancel" class="small_button" />
         </ui:VisualElement>
     </UI.Connection.ConnectionElement>
 </ui:UXML>

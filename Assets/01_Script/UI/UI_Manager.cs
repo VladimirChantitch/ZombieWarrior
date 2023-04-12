@@ -38,6 +38,7 @@ namespace ui
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
         public event Action<string> onPlayerSignIn;
+        public event Action<string> onPlayerConnection;
 
         public void Awake()
         {
@@ -130,6 +131,11 @@ namespace ui
         private void InitConnectionMenu(ConnectionElement connectionElement)
         {
             connectionElement.Init(PlayerCrud.Instance.GetAllPlayers());
+            connectionElement.onCancel += () => {
+                ResourcesManager.Instance.ChangeSubState(GameState.None);
+                ChangeUITemplate();
+            };
+            connectionElement.onPlayerSelected += (playerName) => onPlayerConnection?.Invoke(playerName);
         }
     }
 }

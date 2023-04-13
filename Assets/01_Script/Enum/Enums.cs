@@ -40,5 +40,7 @@ public enum GameState
     Playing,
     Loading,
     Win,
-    Loose
+    Loose,
+    NewUserScreen,
+    ConnectionScreen
 }

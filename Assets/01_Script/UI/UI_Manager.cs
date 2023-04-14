@@ -24,6 +24,7 @@ using ui.template;
 using UI.Connection;
 using UI.SignIn;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 namespace ui
@@ -37,6 +38,7 @@ namespace ui
 
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
+        public event Action<GameState> onLeaderBoard;
         public event Action<string> onPlayerSignIn;
         public event Action<string> onPlayerConnection;
 
@@ -72,6 +74,10 @@ namespace ui
                     case LooseMenuElement looseMenuElement:
                         InitLooseMenu(looseMenuElement);
                         break;
+                    case LeaderBoardElement leaderBoardElement:
+                        InitLeaderBoard(leaderBoardElement);
+                        break;
+
                     case SignInElement signInElement:
                         InitSignMenu(signInElement);
                         break;
@@ -102,6 +108,18 @@ namespace ui
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
             startMenuElement.Init();
+            startMenuElement.onStartButton += () => onStartGame?.Invoke(GameScene.Main_scene);
+            startMenuElement.onCreditsButton += () =>
+            {
+                Debug.Log("werwer");
+                ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
+                ChangeUITemplate();
+            };
+        }
+
+        private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
+        {
+            leaderBoardElement.Init();
             startMenuElement.onStartButton += () =>
             {
                 ResourcesManager.Instance.ChangeSubState(GameState.NewUserScreen);

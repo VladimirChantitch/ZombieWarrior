@@ -200,7 +200,7 @@ MonoBehaviour:
   sceneState: 1
   gameState: 0
   scenes:
-  - scene: 2
+  - scene: 0
     scene_name: main_scene
   templates:
   - gameState: 0

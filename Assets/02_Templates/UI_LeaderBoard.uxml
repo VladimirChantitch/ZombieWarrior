@@ -8,26 +8,26 @@
                     <ui:VisualElement class="container" style="flex-direction: column-reverse; height: 150px; width: 130px; background-color: rgb(112, 123, 112); margin-top: auto; justify-content: flex-end; margin-bottom: 0;">
                         <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
                             <ui:Label text="2" display-tooltip-when-elided="true" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="FirstPlace" style="justify-content: flex-start; align-items: center;">
                     <ui:Label name="0" display-tooltip-when-elided="true" style="color: rgba(10, 204, 9, 255);" />
                     <ui:VisualElement name="FirstBar" class="leader" style="height: 200px; width: 130px; background-color: rgba(255, 223, 0, 0.6); background-image: none;">
-                        <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
-                            <ui:Label text="1" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                    <ui:Label text="1" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="ThirdPlace" style="justify-content: flex-start; align-items: center;">
                     <ui:Label name="2" display-tooltip-when-elided="true" style="justify-content: center; color: rgba(14, 241, 6, 255);" />
                     <ui:VisualElement name="ThirdBar" style="height: 100px; width: 130px; background-color: rgb(205, 127, 50); margin-top: auto; align-items: center;">
                         <ui:VisualElement name="ThirdCircle">
-                            <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
-                                <ui:Label text="3" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+                <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                    <ui:Label text="3" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -36,8 +36,8 @@
                 <ui:VisualElement style="width: 500px; height: 50px; justify-content: space-around; align-items: center; margin-top: 13px; background-color: rgb(91, 91, 91); flex-direction: row;">
                     <ui:Label text="Name" display-tooltip-when-elided="true" style="width: 65px; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; font-size: 16px; color: rgb(255, 255, 255);" />
                     <ui:Label text="HighScore" display-tooltip-when-elided="true" style="width: 65px; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; color: rgb(250, 250, 250); font-size: 16px;" />
-                </ui:VisualElement>
-            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
         </ui:ScrollView>
     </ui.template.LeaderBoardElement>
 </ui:UXML>

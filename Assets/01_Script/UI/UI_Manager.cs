@@ -108,18 +108,7 @@ namespace ui
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
             startMenuElement.Init();
-            startMenuElement.onStartButton += () => onStartGame?.Invoke(GameScene.Main_scene);
-            startMenuElement.onCreditsButton += () =>
-            {
-                Debug.Log("werwer");
-                ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
-                ChangeUITemplate();
-            };
-        }
-
-        private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
-        {
-            leaderBoardElement.Init();
+            //startMenuElement.onStartButton += () => onStartGame?.Invoke(GameScene.Main_scene);
             startMenuElement.onStartButton += () =>
             {
                 ResourcesManager.Instance.ChangeSubState(GameState.NewUserScreen);
@@ -131,6 +120,18 @@ namespace ui
                 ResourcesManager.Instance.ChangeSubState(GameState.ConnectionScreen);
                 ChangeUITemplate();
             };
+            startMenuElement.onCreditsButton += () =>
+            {
+                Debug.Log("werwer");
+                ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
+                ChangeUITemplate();
+            };
+        }
+
+        private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
+        {
+            leaderBoardElement.Init();
+            
         }
 
         private void InitSignMenu(SignInElement signInElement)

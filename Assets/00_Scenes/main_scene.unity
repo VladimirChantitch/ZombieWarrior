@@ -689,7 +689,7 @@ MonoBehaviour:
   sceneState: 2
   gameState: 1
   scenes:
-  - scene: 1
+  - scene: 3
     scene_name: start_scene
   templates:
   - gameState: 3

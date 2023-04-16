@@ -48,6 +48,8 @@ namespace savesystem.realm
         {
             realm.Write(() =>
             {
+                //For avoiding null object
+                currentPlayerRealm = GetPlayerData(PlayerName);
                 realm.Remove(currentPlayerRealm);
                 currentPlayerRealm = null;
             });
@@ -55,8 +57,9 @@ namespace savesystem.realm
 
         public IQueryable<PlayerRealm> GetAllPlayers()
         {
-            return realm.All<PlayerRealm>();
+            return realm.All<PlayerRealm>().OrderByDescending(x => x.highScore);
         }
+        
     }
 }
 

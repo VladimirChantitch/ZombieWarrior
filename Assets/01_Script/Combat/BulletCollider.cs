@@ -25,7 +25,7 @@ namespace combat
                 Instantiate(destructionParticles, transform.position, transform.rotation);
                 InflictDamage(takeDamageCollider);
             }
-            else if (collision.gameObject.layer == 31)
+            else if (collision.gameObject.layer == 10)
             {
                 StopAllCoroutines();
                 Instantiate(destructionParticles, transform.position, transform.rotation);

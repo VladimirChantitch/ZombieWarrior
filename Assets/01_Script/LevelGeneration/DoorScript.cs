@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-    public Transform travelPoint;
     private RoomScript room;
-
     private void Start()
     {
         room = GetComponentInParent<RoomScript>();
@@ -15,7 +13,6 @@ public class DoorScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             room.Spawn();
-            GameObject.FindGameObjectWithTag("Player").transform.position = travelPoint.position;
         }
     }
 }

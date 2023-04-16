@@ -142,3 +142,7 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+.hp-bar .unity-progress-bar__progress {
+    background-color: red;
+}

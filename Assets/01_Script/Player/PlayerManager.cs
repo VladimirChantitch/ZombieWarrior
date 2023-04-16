@@ -48,6 +48,8 @@ namespace player
         [SerializeField] AnimationHelper animator;
         [SerializeField] CrossAir crossAir;
 
+        [SerializeField] SpriteRenderer characterSprite;
+
         [Header("Camera")]
         [SerializeField] Camera camera;
         [SerializeField] CameraShake cameraShake;
@@ -244,14 +246,29 @@ namespace player
             if (canTakeDamage)
             {
                 statComponent.AddOrRemoveStat(E_Stats.Life, damageData.DamageAmount);
-                PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
-                cameraShake.ShakeCamera(2f, 0.1f, 1);
+                HitPostEffet();
+
                 Debug.Log($"<color=purple> The player took damage {statComponent.GetStatValue(E_Stats.Life)} </color>");
                 if (statComponent.GetStatValue(E_Stats.Life) <= 0)
                 {
                     onPlayerDied?.Invoke();
                 }
+
+                PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
             }
+        }
+
+        private void HitPostEffet()
+        {
+            cameraShake.ShakeCamera(2f, 0.1f, 1);
+            StartCoroutine(flashSprite());
+        }
+
+        IEnumerator flashSprite()
+        {
+            characterSprite.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            characterSprite.color = Color.white;
         }
     }
 }

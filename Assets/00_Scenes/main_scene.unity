@@ -1025,6 +1025,11 @@ PrefabInstance:
     - {fileID: 4579725980744345962, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
     - {fileID: 4579725980744345963, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
+--- !u!212 &683388179 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5612600277315210138, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
+  m_PrefabInstance: {fileID: 683388178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &788113627
 GameObject:
   m_ObjectHideFlags: 3
@@ -1328,6 +1333,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7104067279070000941, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104067279070000941, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104067279070000941, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7104067280173242448, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2141,6 +2158,7 @@ MonoBehaviour:
   statSystem: {fileID: 11400000, guid: 272b729a36a290a4e88beb255ef67be5, type: 2}
   animator: {fileID: 2016721212}
   crossAir: {fileID: 1959767339}
+  characterSprite: {fileID: 683388179}
   camera: {fileID: 1226916415}
   cameraShake: {fileID: 1226916413}
   playerTakeDamageCollider: {fileID: 161205293}

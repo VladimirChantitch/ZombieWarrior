@@ -689,13 +689,11 @@ MonoBehaviour:
   sceneState: 2
   gameState: 1
   scenes:
-  - scene: 3
+  - scene: 1
     scene_name: start_scene
   templates:
-  - gameState: 3
-    template: {fileID: 9197481963319205126, guid: fd2e1ac0165990f4b98933ae5a5eac90, type: 3}
   - gameState: 4
-    template: {fileID: 9197481963319205126, guid: 49c7d41c4b177cc43bfa7e16e220a022, type: 3}
+    template: {fileID: 9197481963319205126, guid: 5669806b624f13747aeb1175d20f23b2, type: 3}
   - gameState: 1
     template: {fileID: 9197481963319205126, guid: 1f3ee94d0750ca445b1ac11efe86a9d3, type: 3}
   templateContainers: []

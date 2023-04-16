@@ -25,6 +25,7 @@ using savesystem;
 using savesystem.dto;
 using savesystem.realm;
 using stats;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,8 @@ namespace player
         Coroutine autoShootCorroutine;
 
         float currentFireRate;
+
+        public event Action onPlayerDied;
 
         void Awake()
         {
@@ -243,6 +246,10 @@ namespace player
                 PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
                 cameraShake.ShakeCamera(2f, 0.1f, 1);
                 Debug.Log($"<color=purple> The player took damage {statComponent.GetStatValue(E_Stats.Life)} </color>");
+                if (statComponent.GetStatValue(E_Stats.Life) <= 0)
+                {
+                    onPlayerDied?.Invoke();
+                }
             }
         }
     }

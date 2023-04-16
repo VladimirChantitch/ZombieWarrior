@@ -83,6 +83,9 @@ namespace ui
                     case ConnectionElement connectionElement:
                         InitConnectionMenu(connectionElement);
                         break;
+                    case ATHElement aTHElement:
+                        InitATHElement(aTHElement);
+                        break;
                 }
             }
             else
@@ -153,6 +156,11 @@ namespace ui
                 ChangeUITemplate();
             };
             connectionElement.onPlayerSelected += (playerName) => onPlayerConnection?.Invoke(playerName);
+        }
+
+        private void InitATHElement(ATHElement aTHElement)
+        {
+            aTHElement.Init(PlayerCrud.Instance.GetPlayer(SeesionCookie.currentPlayerName));
         }
     }
 }

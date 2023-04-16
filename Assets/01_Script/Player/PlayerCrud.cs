@@ -48,7 +48,10 @@ namespace savesystem.realm
             }
             else
             {
-                currentPlayerRealm.highScore += amount;
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.highScore += amount;
+                });
             }
         }
 

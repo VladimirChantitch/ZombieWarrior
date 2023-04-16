@@ -15,10 +15,11 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using savesystem.realm;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
+using System.ComponentModel;
 
 namespace ui.template
 {
@@ -27,5 +28,25 @@ namespace ui.template
         public new class UxmlFactory : UxmlFactory<ATHElement, ATHElement.UxmlTraits> { }
 
         public ATHElement() { }
+
+        public Label l_score = null;
+        public ProgressBar progressBar = null;
+
+        public void Init(PlayerRealm playerRealm)
+        {
+            BindUI(playerRealm);
+        }
+
+        private void BindUI(PlayerRealm playerRealm)
+        {
+            l_score = this.Q<Label>("l_score");
+            progressBar = this.Q<ProgressBar>();
+
+            playerRealm.PropertyChanged += (obj, args) =>
+            {
+                l_score.text = (obj as PlayerRealm).highScore.ToString();
+            };
+        }
+
     }
 }

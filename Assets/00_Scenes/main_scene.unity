@@ -1374,10 +1374,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -182.049
       objectReference: {fileID: 0}
-    - target: {fileID: 7104067280173242449, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
-      propertyPath: statSystem
-      value: 
-      objectReference: {fileID: 11400000, guid: eb9926c95510dc34d960ab914990806c, type: 2}
     - target: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
       propertyPath: m_Name
       value: Zombie_opti_01$

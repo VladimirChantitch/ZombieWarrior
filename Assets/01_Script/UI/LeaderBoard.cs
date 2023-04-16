@@ -13,22 +13,15 @@ namespace ui.template
 public class LeaderBoardElement : AbstractTemplateElement
 {
    public new class UxmlFactory : UxmlFactory<LeaderBoardElement, LeaderBoardElement.UxmlTraits> { }
-        private PlayerCrud playerCrud;
-        Realm realm;
         VisualElement PlayerInformation;
         public LeaderBoardElement() { }
 
         public void Init()
         {
-            realm = Realm.GetInstance();
-            playerCrud = new PlayerCrud(realm);
             PlayerInformation = new VisualElement();
             PlayerInformation = this.Q<VisualElement>("PlayersInformation");
 
-            playerCrud.RemovePlayer("1");
-            playerCrud.RemovePlayer("2");
-
-            IQueryable<PlayerRealm> allPlayer = playerCrud.GetAllPlayers();
+            IQueryable<PlayerRealm> allPlayer = PlayerCrud.Instance.GetAllPlayers();
             int i = 0;
             foreach (var player in allPlayer)
             {
@@ -54,7 +47,6 @@ public class LeaderBoardElement : AbstractTemplateElement
                 playerLine.style.flexDirection = FlexDirection.Row;
                 playerLine.style.color = Color.white;
                 
-
                 //setting conent player on labels
                 Label name = new Label();
                 Label highScore = new Label();
@@ -64,7 +56,6 @@ public class LeaderBoardElement : AbstractTemplateElement
                 PlayerInformation.Add(playerLine);
                 this.Q<VisualElement>(player.Name).Add(name);
                 this.Q<VisualElement>(player.Name).Add(highScore);
-
             }
         }
     }

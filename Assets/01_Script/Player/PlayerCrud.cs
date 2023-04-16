@@ -49,7 +49,7 @@ namespace savesystem.realm
             realm.Write(() =>
             {
                 //For avoiding null object
-                currentPlayerRealm = GetPlayerData(PlayerName);
+                currentPlayerRealm = GetPlayer(PlayerName);
                 realm.Remove(currentPlayerRealm);
                 currentPlayerRealm = null;
             });

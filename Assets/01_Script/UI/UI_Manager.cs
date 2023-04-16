@@ -108,7 +108,7 @@ namespace ui
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
             startMenuElement.Init();
-            //startMenuElement.onStartButton += () => onStartGame?.Invoke(GameScene.Main_scene);
+
             startMenuElement.onStartButton += () =>
             {
                 ResourcesManager.Instance.ChangeSubState(GameState.NewUserScreen);

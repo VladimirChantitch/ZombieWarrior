@@ -77,7 +77,6 @@ namespace ui
                     case LeaderBoardElement leaderBoardElement:
                         InitLeaderBoard(leaderBoardElement);
                         break;
-
                     case SignInElement signInElement:
                         InitSignMenu(signInElement);
                         break;

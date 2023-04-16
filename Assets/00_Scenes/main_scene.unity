@@ -761,8 +761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 293216347}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &404192283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,8 +1220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 904151065}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &905120107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,8 +1426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 1046234308}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &1202848328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,8 +2196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 1483124017}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &1495986944
 GameObject:
   m_ObjectHideFlags: 0

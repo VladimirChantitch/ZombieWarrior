@@ -29,7 +29,7 @@ namespace savesystem.realm
             });
         }
         
-        public PlayerRealm GetPlayerData(string PlayerName)
+        public PlayerRealm GetPlayer(string PlayerName)
         {
             currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
             return currentPlayerRealm;

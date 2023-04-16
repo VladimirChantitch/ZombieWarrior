@@ -8563,5 +8563,9 @@ PrefabInstance:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1226916413}
+    - target: {fileID: 6725641214624569552, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
+      propertyPath: muzzleEffect
+      value: 
+      objectReference: {fileID: 8225680122404276590, guid: 2dbf76f8b15c83f428209b87491090d8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}

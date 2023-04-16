@@ -41,7 +41,6 @@ namespace game_manager
             HandleCookieData();
 
             BindUI_Events();
-            BindPlayer_Events();
             BindSound_Events();
 
             ChangeTemplate();
@@ -57,6 +56,7 @@ namespace game_manager
                     break;
                 case GameScene.Main_scene:
                     playerManager.Name = SeesionCookie.currentPlayerName;
+                    BindPlayer_Events();
                     break;
                 case GameScene.End_Scene:
                     break;
@@ -71,7 +71,11 @@ namespace game_manager
 
         private void BindPlayer_Events()
         {
-
+            playerManager.onPlayerDied += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.Loose);
+                uiManager.ChangeUITemplate();
+            };
         }
 
         private void BindUI_Events()
@@ -104,22 +108,6 @@ namespace game_manager
         private void ChangeTemplate()
         {
             uiManager.ChangeUITemplate();
-        }
-
-        /// <summary>
-        /// A method to call a save
-        /// </summary>
-        public void SaveGame()
-        {
-            saveManager.SaveGame();
-        }
-
-        /// <summary>
-        /// A method to call a load
-        /// </summary>
-        public void LoadGame()
-        {
-            saveManager.LoadGame();
         }
         #endregion
     }

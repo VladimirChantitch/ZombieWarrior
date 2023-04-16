@@ -86,12 +86,10 @@ public class ResourcesManager : MonoBehaviour
                 {
                     return scenes[i].SCENE_NAME;
                 }
-                else
-                {
-                    Debug.Log($"<color=red> THE SCENE YOU ARE TYING TO LOAD DOSEN4T EXIST </color>");
-                }
             }
         }
+        Debug.Log($"<color=red> THE SCENE YOU ARE TYING TO LOAD DOSEN4T EXIST </color>");
+
         return null;
     }
 

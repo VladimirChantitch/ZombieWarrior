@@ -24,6 +24,7 @@ using ui.template;
 using UI.Connection;
 using UI.SignIn;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 namespace ui
@@ -37,6 +38,7 @@ namespace ui
 
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
+        public event Action<GameState> onLeaderBoard;
         public event Action<string> onPlayerSignIn;
         public event Action<string> onPlayerConnection;
 
@@ -72,11 +74,17 @@ namespace ui
                     case LooseMenuElement looseMenuElement:
                         InitLooseMenu(looseMenuElement);
                         break;
+                    case LeaderBoardElement leaderBoardElement:
+                        InitLeaderBoard(leaderBoardElement);
+                        break;
                     case SignInElement signInElement:
                         InitSignMenu(signInElement);
                         break;
                     case ConnectionElement connectionElement:
                         InitConnectionMenu(connectionElement);
+                        break;
+                    case ATHElement aTHElement:
+                        InitATHElement(aTHElement);
                         break;
                 }
             }
@@ -102,6 +110,7 @@ namespace ui
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
             startMenuElement.Init();
+
             startMenuElement.onStartButton += () =>
             {
                 ResourcesManager.Instance.ChangeSubState(GameState.NewUserScreen);
@@ -113,6 +122,17 @@ namespace ui
                 ResourcesManager.Instance.ChangeSubState(GameState.ConnectionScreen);
                 ChangeUITemplate();
             };
+            startMenuElement.onCreditsButton += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
+                ChangeUITemplate();
+            };
+        }
+
+        private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
+        {
+            leaderBoardElement.Init();
+            leaderBoardElement.onPlayAgain += () => onBackToMain?.Invoke(GameScene.Start_scene);
         }
 
         private void InitSignMenu(SignInElement signInElement)
@@ -136,6 +156,11 @@ namespace ui
                 ChangeUITemplate();
             };
             connectionElement.onPlayerSelected += (playerName) => onPlayerConnection?.Invoke(playerName);
+        }
+
+        private void InitATHElement(ATHElement aTHElement)
+        {
+            aTHElement.Init(PlayerCrud.Instance.GetPlayer(SeesionCookie.currentPlayerName));
         }
     }
 }

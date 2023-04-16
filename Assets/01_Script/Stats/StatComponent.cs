@@ -58,6 +58,16 @@ namespace character.stat
         {
             return characterStats.Where(s => s.StatTypes == statTypes).FirstOrDefault().Amount;
         }
+
+        /// <summary>
+        /// Returns the value of a character stat
+        /// </summary>
+        /// <param name="statTypes"></param>
+        /// <returns></returns>
+        public virtual float GetMaxStatValue(E_Stats statTypes)
+        {
+            return characterStats.Where(s => s.StatTypes == statTypes).FirstOrDefault().MaxAmount;
+        }
     }
 }
 

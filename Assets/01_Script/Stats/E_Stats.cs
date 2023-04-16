@@ -5,5 +5,6 @@ using UnityEngine;
 public enum E_Stats
 {
     Life,
-    Stamina
+    Stamina,
+    value
 }

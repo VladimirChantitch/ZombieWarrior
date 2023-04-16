@@ -1,6 +1,8 @@
+using camera;
 using character.ai;
 using character.stat;
 using combat;
+using savesystem.realm;
 using stats;
 using System;
 using System.Collections;
@@ -49,15 +51,30 @@ namespace character
             if (isDead) return;
 
             statComponent.AddOrRemoveStat(E_Stats.Life, damageData.DamageAmount);
+            HitPostEffet();
 
             if (statComponent.GetStatValue(E_Stats.Life) <= 0)
             {
                 isDead = true;
                 brain.HandleState(AI_States.Dying);
                 onNpcDied?.Invoke();
+                PlayerCrud.Instance.IncreaseHighScore(SeesionCookie.currentPlayerName, (int)statComponent.GetStatValue(E_Stats.value));
                 zombiTakeDamageCollider.CloseCollider();
                 spriteRenderer.sortingOrder = -1;
             }
+        }
+
+
+        protected void HitPostEffet()
+        {
+            StartCoroutine(flashSprite());
+        }
+
+        IEnumerator flashSprite()
+        {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = Color.white;
         }
     }
 }

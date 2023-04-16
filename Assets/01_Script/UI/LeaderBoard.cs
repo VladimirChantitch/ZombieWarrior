@@ -7,6 +7,7 @@ using savesystem.realm;
 using Realms;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace ui.template
 {
@@ -16,10 +17,17 @@ public class LeaderBoardElement : AbstractTemplateElement
         VisualElement PlayerInformation;
         public LeaderBoardElement() { }
 
+        public event Action onPlayAgain;
+
+        Button btn_try_again;
+
         public void Init()
         {
             PlayerInformation = new VisualElement();
             PlayerInformation = this.Q<VisualElement>("PlayersInformation");
+
+            btn_try_again = this.Q<Button>("btn_try_again");
+            btn_try_again.clicked += () => onPlayAgain?.Invoke();
 
             IQueryable<PlayerRealm> allPlayer = PlayerCrud.Instance.GetAllPlayers();
             int i = 0;

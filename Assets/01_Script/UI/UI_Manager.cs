@@ -130,7 +130,7 @@ namespace ui
         private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
         {
             leaderBoardElement.Init();
-            
+            leaderBoardElement.onPlayAgain += () => onBackToMain?.Invoke(GameScene.Start_scene);
         }
 
         private void InitSignMenu(SignInElement signInElement)

@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/leader-board.uss?fileID=7433441132597879392&amp;guid=2d00e0aa5c062df4fa3c3daa113d450a&amp;type=3#leader-board" />
+    <Style src="project://database/Assets/02_Templates/main.uss?fileID=7433441132597879392&amp;guid=2f1b6ac39304b614592e9decf9ddb8af&amp;type=3#main" />
     <ui.template.LeaderBoardElement style="align-items: center; justify-content: flex-start; flex-direction: column;">
         <ui:VisualElement name="PrincipalBlock" style="height: auto; flex-grow: 0;">
             <ui:VisualElement name="TopThreeBlock" style="height: auto; width: auto; flex-direction: row; flex-shrink: 1; justify-content: center; flex-grow: 1; margin-top: 63px; align-items: flex-end;">
@@ -38,5 +39,8 @@
         <ui:ScrollView name="ScrollViewPlayers">
             <ui:VisualElement name="PlayersInformation" style="height: auto; flex-grow: 1; flex-direction: column; align-items: center; justify-content: flex-start; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto;" />
         </ui:ScrollView>
+        <ui:VisualElement name="btn_container">
+            <ui:Button text="Try Again ?" display-tooltip-when-elided="true" name="btn_try_again" class="small_button" />
+        </ui:VisualElement>
     </ui.template.LeaderBoardElement>
 </ui:UXML>

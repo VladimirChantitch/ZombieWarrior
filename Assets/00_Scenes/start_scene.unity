@@ -202,12 +202,16 @@ MonoBehaviour:
   scenes:
   - scene: 2
     scene_name: main_scene
+  - scene: 1
+    scene_name: start_scene
   templates:
   - gameState: 0
     template: {fileID: 9197481963319205126, guid: 248e0a906e71dbf4ca531a355c7d9681, type: 3}
   - gameState: 5
     template: {fileID: 9197481963319205126, guid: 5669806b624f13747aeb1175d20f23b2, type: 3}
   - gameState: 6
+    template: {fileID: 9197481963319205126, guid: 766fa2951fec72445981c8ffa5898bfd, type: 3}
+  - gameState: 7
     template: {fileID: 9197481963319205126, guid: ab682100ad0b8d14daab6109530d127a, type: 3}
   templateContainers:
   - name: connectionButton

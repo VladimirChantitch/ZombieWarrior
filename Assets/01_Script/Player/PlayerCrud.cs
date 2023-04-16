@@ -22,13 +22,36 @@ namespace savesystem.realm
 
         public void SetHighScore(string PlayerName, int highScore)
         {
-            realm.Write(() =>
+            if (currentPlayerRealm == null && currentPlayerRealm.Name != PlayerName)
             {
-                PlayerRealm playerRealm = realm.Find<PlayerRealm>(PlayerName);
-                playerRealm.highScore = highScore;
-            });
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.highScore = highScore;
+                });
+            }
+            else
+            {
+                currentPlayerRealm.highScore = highScore;
+            }
         }
-        
+
+        public void IncreaseHighScore(string PlayerName, int amount)
+        {
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.highScore += amount;
+                });
+            }
+            else
+            {
+                currentPlayerRealm.highScore += amount;
+            }
+        }
+
         public PlayerRealm GetPlayer(string PlayerName)
         {
             currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);

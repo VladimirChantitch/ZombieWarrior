@@ -121,7 +121,6 @@ namespace ui
             };
             startMenuElement.onCreditsButton += () =>
             {
-                Debug.Log("werwer");
                 ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
                 ChangeUITemplate();
             };

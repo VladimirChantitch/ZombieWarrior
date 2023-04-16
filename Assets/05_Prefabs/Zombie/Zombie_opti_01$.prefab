@@ -610,7 +610,7 @@ MonoBehaviour:
   brain: {fileID: 176416559757493962}
   statComponent:
     characterStats: []
-  statSystem: {fileID: 11400000, guid: 272b729a36a290a4e88beb255ef67be5, type: 2}
+  statSystem: {fileID: 11400000, guid: eb9926c95510dc34d960ab914990806c, type: 2}
   spriteRenderer: {fileID: 7104067279070000941}
   _name: b
   _description: b

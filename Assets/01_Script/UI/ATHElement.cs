@@ -16,10 +16,8 @@
  */
 
 using savesystem.realm;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UIElements;
-using System.ComponentModel;
+using UnityEngine;
 
 namespace ui.template
 {
@@ -42,9 +40,17 @@ namespace ui.template
             l_score = this.Q<Label>("l_score");
             progressBar = this.Q<ProgressBar>();
 
+            l_score.text = playerRealm.highScore.ToString();
+
+            progressBar.lowValue = 0;
+            progressBar.highValue = playerRealm.maxHealth;
+            progressBar.value = playerRealm.health;
+
             playerRealm.PropertyChanged += (obj, args) =>
             {
-                l_score.text = (obj as PlayerRealm).highScore.ToString();
+                PlayerRealm realm = (obj as PlayerRealm);
+                l_score.text = realm.highScore.ToString();
+                progressBar.value = realm.health;
             };
         }
 

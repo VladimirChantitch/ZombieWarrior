@@ -85,6 +85,8 @@ namespace player
         {
             SubscriteToInputs();
             InitEvents();
+            PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
+            PlayerCrud.Instance.SetPlayerMaxHealth(SeesionCookie.currentPlayerName, statComponent.GetMaxStatValue(E_Stats.Life));
         }
 
         public static Vector3 CURRENT_POSITION;
@@ -238,6 +240,7 @@ namespace player
             if (canTakeDamage)
             {
                 statComponent.AddOrRemoveStat(E_Stats.Life, damageData.DamageAmount);
+                PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
                 cameraShake.ShakeCamera(2f, 0.1f, 1);
                 Debug.Log($"<color=purple> The player took damage {statComponent.GetStatValue(E_Stats.Life)} </color>");
             }

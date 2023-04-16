@@ -22,7 +22,7 @@ namespace savesystem.realm
 
         public void SetHighScore(string PlayerName, int highScore)
         {
-            if (currentPlayerRealm == null && currentPlayerRealm.Name != PlayerName)
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
             {
                 realm.Write(() =>
                 {
@@ -32,9 +32,51 @@ namespace savesystem.realm
             }
             else
             {
-                currentPlayerRealm.highScore = highScore;
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.highScore = highScore;
+                });
             }
         }
+
+        public void SetPlayerHealth(string PlayerName, float health)
+        {
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.health = health;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.health = health;
+                });
+            }
+        }
+
+        public void SetPlayerMaxHealth(string PlayerName, float maxHealth)
+        {
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.maxHealth = maxHealth;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.maxHealth = maxHealth;
+                });
+            }
+        }
+
 
         public void IncreaseHighScore(string PlayerName, int amount)
         {
@@ -74,7 +116,6 @@ namespace savesystem.realm
         {
             realm.Write(() =>
             {
-                //For avoiding null object
                 currentPlayerRealm = GetPlayer(PlayerName);
                 realm.Remove(currentPlayerRealm);
                 currentPlayerRealm = null;

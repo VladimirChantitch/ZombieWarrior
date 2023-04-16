@@ -105,22 +105,6 @@ namespace game_manager
         {
             uiManager.ChangeUITemplate();
         }
-
-        /// <summary>
-        /// A method to call a save
-        /// </summary>
-        public void SaveGame()
-        {
-            saveManager.SaveGame();
-        }
-
-        /// <summary>
-        /// A method to call a load
-        /// </summary>
-        public void LoadGame()
-        {
-            saveManager.LoadGame();
-        }
         #endregion
     }
 }

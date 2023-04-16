@@ -9,6 +9,8 @@ namespace savesystem.realm
         [PrimaryKey]
         public string Name { get; set; }
         public int highScore { get; set; }  
+        public float health { get; set; }
+        public float maxHealth { get;set; }
     }
 }
 

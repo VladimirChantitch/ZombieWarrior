@@ -62,7 +62,7 @@ namespace player
         [Header("combat")]
         [SerializeField] WeaponManager  weaponManager;
 
-        [SerializeField] bool canTakeDamage;
+        [SerializeField] bool canTakeDamage = true;
 
 
         Coroutine autoShootCorroutine;
@@ -88,6 +88,7 @@ namespace player
         {
             SubscriteToInputs();
             InitEvents();
+            canTakeDamage = true;
             PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
             PlayerCrud.Instance.SetPlayerMaxHealth(SeesionCookie.currentPlayerName, statComponent.GetMaxStatValue(E_Stats.Life));
         }
@@ -223,8 +224,8 @@ namespace player
                 if (dashTrail != null)
                 {
                     dashTrail.enabled = true;
-                    canTakeDamage = false;
                 }
+                canTakeDamage = false;
             }
             else
             {
@@ -233,8 +234,8 @@ namespace player
                 if (dashTrail != null)
                 {
                     dashTrail.enabled = false;
-                    canTakeDamage = true;
                 }
+                canTakeDamage = true;
             }
         }
 

@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5f7065a22cbcf40bffd655e785c735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deleteDB: 0
 --- !u!1 &97280522
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f02ccbe2b0c73458ed5d80fdf2cec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneState: 0
+  sceneState: 2
   gameState: 1
   scenes:
   - scene: 1
@@ -697,6 +698,7 @@ MonoBehaviour:
     template: {fileID: 9197481963319205126, guid: 49c7d41c4b177cc43bfa7e16e220a022, type: 3}
   - gameState: 1
     template: {fileID: 9197481963319205126, guid: 1f3ee94d0750ca445b1ac11efe86a9d3, type: 3}
+  templateContainers: []
   tick: 0.075
 --- !u!4 &285853165
 Transform:
@@ -759,8 +761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 293216347}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &404192283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,8 +1220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 904151065}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &905120107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,8 +1426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 1046234308}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &1202848328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,8 +2196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 7104067280173242451, guid: cce15c1d6b89c324ca3f5e15846da8ae, type: 3}
   Hierarchy: {fileID: 1483124017}
-  timer: 1
-  max_spawn: 5
+  timer: 2
+  max_spawn: 100
 --- !u!1 &1495986944
 GameObject:
   m_ObjectHideFlags: 0

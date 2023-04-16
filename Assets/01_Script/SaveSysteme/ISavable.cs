@@ -15,6 +15,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using Realms;
 using savesystem.dto;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,8 +25,8 @@ namespace savesystem
 {
     public interface ISavable
     {
-        public Dto Save();
+        public void Save();
 
-        public void Load(Dto dto); 
+        public void Load(RealmObject realmObject); 
     }
 }

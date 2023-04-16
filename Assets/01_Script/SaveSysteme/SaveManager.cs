@@ -20,27 +20,17 @@ namespace savesystem
 
         private void OnEnable()
         {
-            realm = Realm.GetInstance();
+            var config = new RealmConfiguration
+            {
+                ShouldDeleteIfMigrationNeeded = true,
+            };
+            realm = Realm.GetInstance(config);
             new PlayerCrud(realm);
         }
 
         private void OnDisable()
         {
             realm.Dispose();
-        }
-
-        internal void LoadGame()
-        {
-
-        }
-
-        internal void SaveGame()
-        {
-            List<UnityEngine.Object> savables = FindObjectsOfType<UnityEngine.Object>().Where(o => o is ISavable).ToList();
-            savables.ForEach(s =>
-            {
-                //s.Save(); //TODO
-            });
         }
 
 #if UNITY_EDITOR

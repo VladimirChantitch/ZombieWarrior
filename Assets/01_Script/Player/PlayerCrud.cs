@@ -22,13 +22,81 @@ namespace savesystem.realm
 
         public void SetHighScore(string PlayerName, int highScore)
         {
-            realm.Write(() =>
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
             {
-                PlayerRealm playerRealm = realm.Find<PlayerRealm>(PlayerName);
-                playerRealm.highScore = highScore;
-            });
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.highScore = highScore;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.highScore = highScore;
+                });
+            }
         }
-        
+
+        public void SetPlayerHealth(string PlayerName, float health)
+        {
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.health = health;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.health = health;
+                });
+            }
+        }
+
+        public void SetPlayerMaxHealth(string PlayerName, float maxHealth)
+        {
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.maxHealth = maxHealth;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.maxHealth = maxHealth;
+                });
+            }
+        }
+
+
+        public void IncreaseHighScore(string PlayerName, int amount)
+        {
+            if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
+                    currentPlayerRealm.highScore += amount;
+                });
+            }
+            else
+            {
+                realm.Write(() =>
+                {
+                    currentPlayerRealm.highScore += amount;
+                });
+            }
+        }
+
         public PlayerRealm GetPlayer(string PlayerName)
         {
             currentPlayerRealm = realm.Find<PlayerRealm>(PlayerName);
@@ -48,6 +116,7 @@ namespace savesystem.realm
         {
             realm.Write(() =>
             {
+                currentPlayerRealm = GetPlayer(PlayerName);
                 realm.Remove(currentPlayerRealm);
                 currentPlayerRealm = null;
             });
@@ -55,8 +124,9 @@ namespace savesystem.realm
 
         public IQueryable<PlayerRealm> GetAllPlayers()
         {
-            return realm.All<PlayerRealm>();
+            return realm.All<PlayerRealm>().OrderByDescending(x => x.highScore);
         }
+        
     }
 }
 

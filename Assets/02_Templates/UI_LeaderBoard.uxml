@@ -1,0 +1,46 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/leader-board.uss?fileID=7433441132597879392&amp;guid=2d00e0aa5c062df4fa3c3daa113d450a&amp;type=3#leader-board" />
+    <Style src="project://database/Assets/02_Templates/main.uss?fileID=7433441132597879392&amp;guid=2f1b6ac39304b614592e9decf9ddb8af&amp;type=3#main" />
+    <ui.template.LeaderBoardElement class="menuBG" style="align-items: center; justify-content: flex-start; flex-direction: column; flex-grow: 1;">
+        <ui:VisualElement name="PrincipalBlock" style="height: auto; flex-grow: 0;">
+            <ui:VisualElement name="TopThreeBlock" style="height: auto; width: auto; flex-direction: row; flex-shrink: 1; justify-content: center; flex-grow: 1; margin-top: 63px; align-items: flex-end;">
+                <ui:VisualElement name="SecondPlace" style="justify-content: flex-start; align-items: center;">
+                    <ui:Label name="1" display-tooltip-when-elided="true" style="align-items: flex-start; justify-content: flex-start; color: rgb(0, 255, 47);" />
+                    <ui:VisualElement class="container" style="flex-direction: column-reverse; height: 150px; width: 130px; background-color: rgb(112, 123, 112); margin-top: auto; justify-content: flex-end; margin-bottom: 0;">
+                        <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                            <ui:Label text="2" display-tooltip-when-elided="true" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="FirstPlace" style="justify-content: flex-start; align-items: center; flex-direction: column;">
+                    <ui:Label name="0" display-tooltip-when-elided="true" style="color: rgb(10, 204, 9);" />
+                    <ui:VisualElement name="FirstBar" class="leader" style="height: 200px; width: 130px; background-color: rgba(255, 223, 0, 0.6); background-image: none;">
+                        <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                            <ui:Label text="1" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="ThirdPlace" style="justify-content: flex-start; align-items: center;">
+                    <ui:Label name="2" display-tooltip-when-elided="true" style="justify-content: center; color: rgb(14, 241, 6);" />
+                    <ui:VisualElement name="ThirdBar" style="height: 100px; width: 130px; background-color: rgb(205, 127, 50); margin-top: auto; align-items: center;">
+                        <ui:VisualElement name="ThirdCircle">
+                            <ui:VisualElement class="circle" style="border-left-width: 11px; border-right-width: 11px; border-top-width: 11px; border-bottom-width: 11px; background-color: rgb(255, 255, 255); height: 63px; width: 76px; justify-content: center; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-top: 6px;">
+                                <ui:Label text="3" display-tooltip-when-elided="true" name="Label" class="circle-img" style="margin-left: 0; margin-right: -50px; margin-top: 3px; margin-bottom: 0; padding-left: -4px; padding-right: 12px; padding-top: -4px; padding-bottom: -4px; width: 32px; -unity-font-style: bold; font-size: 24px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 43px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="width: 500px; height: 50px; justify-content: space-around; align-items: center; margin-top: 13px; background-color: rgb(91, 91, 91); flex-direction: row;">
+            <ui:Label text="Name" display-tooltip-when-elided="true" style="width: 65px; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; font-size: 16px; color: rgb(255, 255, 255);" />
+            <ui:Label text="HighScore" display-tooltip-when-elided="true" style="width: 65px; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto; color: rgb(250, 250, 250); font-size: 16px;" />
+        </ui:VisualElement>
+        <ui:ScrollView name="ScrollViewPlayers">
+            <ui:VisualElement name="PlayersInformation" style="height: auto; flex-grow: 1; flex-direction: column; align-items: center; justify-content: flex-start; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto;" />
+        </ui:ScrollView>
+        <ui:VisualElement name="btn_container">
+            <ui:Button text="Try Again ?" display-tooltip-when-elided="true" name="btn_try_again" class="small_button" />
+        </ui:VisualElement>
+    </ui.template.LeaderBoardElement>
+</ui:UXML>

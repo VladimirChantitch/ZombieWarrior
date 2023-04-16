@@ -25,6 +25,7 @@ using savesystem;
 using savesystem.dto;
 using savesystem.realm;
 using stats;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,8 @@ namespace player
         [SerializeField] AnimationHelper animator;
         [SerializeField] CrossAir crossAir;
 
+        [SerializeField] SpriteRenderer characterSprite;
+
         [Header("Camera")]
         [SerializeField] Camera camera;
         [SerializeField] CameraShake cameraShake;
@@ -61,12 +64,14 @@ namespace player
         [Header("combat")]
         [SerializeField] WeaponManager  weaponManager;
 
-        [SerializeField] bool canTakeDamage;
+        [SerializeField] bool canTakeDamage = true;
 
 
         Coroutine autoShootCorroutine;
 
         float currentFireRate;
+
+        public event Action onPlayerDied;
 
         void Awake()
         {
@@ -85,6 +90,9 @@ namespace player
         {
             SubscriteToInputs();
             InitEvents();
+            canTakeDamage = true;
+            PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
+            PlayerCrud.Instance.SetPlayerMaxHealth(SeesionCookie.currentPlayerName, statComponent.GetMaxStatValue(E_Stats.Life));
         }
 
         public static Vector3 CURRENT_POSITION;
@@ -218,8 +226,8 @@ namespace player
                 if (dashTrail != null)
                 {
                     dashTrail.enabled = true;
-                    canTakeDamage = false;
                 }
+                canTakeDamage = false;
             }
             else
             {
@@ -228,8 +236,8 @@ namespace player
                 if (dashTrail != null)
                 {
                     dashTrail.enabled = false;
-                    canTakeDamage = true;
                 }
+                canTakeDamage = true;
             }
         }
 
@@ -238,9 +246,29 @@ namespace player
             if (canTakeDamage)
             {
                 statComponent.AddOrRemoveStat(E_Stats.Life, damageData.DamageAmount);
-                cameraShake.ShakeCamera(2f, 0.1f, 1);
+                HitPostEffet();
+
                 Debug.Log($"<color=purple> The player took damage {statComponent.GetStatValue(E_Stats.Life)} </color>");
+                if (statComponent.GetStatValue(E_Stats.Life) <= 0)
+                {
+                    onPlayerDied?.Invoke();
+                }
+
+                PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
             }
+        }
+
+        private void HitPostEffet()
+        {
+            cameraShake.ShakeCamera(2f, 0.1f, 1);
+            StartCoroutine(flashSprite());
+        }
+
+        IEnumerator flashSprite()
+        {
+            characterSprite.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            characterSprite.color = Color.white;
         }
     }
 }

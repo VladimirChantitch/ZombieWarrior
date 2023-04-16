@@ -12,6 +12,7 @@ namespace combat.weapon
         [SerializeField] Transform poolTransform;
         [SerializeField] Weapons_Item currentWeapon;
         [SerializeField] Weapon currentEquippedWeapon;
+        [SerializeField] GameObject muzzleEffect;
 
         [Header("pooling params")]
         BulletCollider[] bulletColliders;
@@ -59,6 +60,8 @@ namespace combat.weapon
                 currentBullet.Rb.AddForce(currentWeapon.BulletSpeed * Direction);
 
                 currentBullet.OpenCollider(bulletAutoDestructionTimer, currentWeapon.DamageData);
+
+                Instantiate(muzzleEffect, currentEquippedWeapon.ShootTransforms[0].position, currentEquippedWeapon.ShootTransforms[0].rotation);
 
                 poolCounter++;
                 if (poolCounter >= MaximumAmountOfBullets)

@@ -18,6 +18,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -85,12 +86,10 @@ public class ResourcesManager : MonoBehaviour
                 {
                     return scenes[i].SCENE_NAME;
                 }
-                else
-                {
-                    Debug.Log($"<color=red> THE SCENE YOU ARE TYING TO LOAD DOSEN4T EXIST </color>");
-                }
             }
         }
+        Debug.Log($"<color=red> THE SCENE YOU ARE TYING TO LOAD DOSEN4T EXIST </color>");
+
         return null;
     }
 
@@ -163,6 +162,22 @@ public class ResourcesManager : MonoBehaviour
 
         public GameState State { get => gameState;  }
         public VisualTreeAsset Template { get => template; }
+    }
+    #endregion
+
+    #region smallTemplate
+    [SerializeField] List<templateDrawer> templateContainers = new List<templateDrawer>();
+
+    public VisualTreeAsset GetTemplateFragment(string fragmentName)
+    {
+        return templateContainers.Find(tc => tc.name == fragmentName).template;
+    }
+
+    [Serializable]
+    public class templateDrawer
+    {
+        public string name;
+        public VisualTreeAsset template;
     }
     #endregion
 

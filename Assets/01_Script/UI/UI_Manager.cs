@@ -16,11 +16,15 @@
  */
 
 
+using savesystem.realm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using ui.template;
+using UI.Connection;
+using UI.SignIn;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 namespace ui
@@ -34,6 +38,9 @@ namespace ui
 
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
+        public event Action<GameState> onLeaderBoard;
+        public event Action<string> onPlayerSignIn;
+        public event Action<string> onPlayerConnection;
 
         public void Awake()
         {
@@ -67,6 +74,18 @@ namespace ui
                     case LooseMenuElement looseMenuElement:
                         InitLooseMenu(looseMenuElement);
                         break;
+                    case LeaderBoardElement leaderBoardElement:
+                        InitLeaderBoard(leaderBoardElement);
+                        break;
+                    case SignInElement signInElement:
+                        InitSignMenu(signInElement);
+                        break;
+                    case ConnectionElement connectionElement:
+                        InitConnectionMenu(connectionElement);
+                        break;
+                    case ATHElement aTHElement:
+                        InitATHElement(aTHElement);
+                        break;
                 }
             }
             else
@@ -91,7 +110,57 @@ namespace ui
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
             startMenuElement.Init();
-            startMenuElement.onStartButton += () => onStartGame?.Invoke(GameScene.Main_scene);
+
+            startMenuElement.onStartButton += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.NewUserScreen);
+                ChangeUITemplate();
+            };
+
+            startMenuElement.onLoadButton += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.ConnectionScreen);
+                ChangeUITemplate();
+            };
+            startMenuElement.onCreditsButton += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
+                ChangeUITemplate();
+            };
+        }
+
+        private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
+        {
+            leaderBoardElement.Init();
+            leaderBoardElement.onPlayAgain += () => onBackToMain?.Invoke(GameScene.Start_scene);
+        }
+
+        private void InitSignMenu(SignInElement signInElement)
+        {
+            signInElement.Init();
+            signInElement.onCancel += () => {
+                ResourcesManager.Instance.ChangeSubState(GameState.None);
+                ChangeUITemplate();
+            };
+            signInElement.onNewPlayerSignIn += (player_name) =>
+            {
+                onPlayerSignIn?.Invoke(player_name);
+            };
+        }
+
+        private void InitConnectionMenu(ConnectionElement connectionElement)
+        {
+            connectionElement.Init(PlayerCrud.Instance.GetAllPlayers());
+            connectionElement.onCancel += () => {
+                ResourcesManager.Instance.ChangeSubState(GameState.None);
+                ChangeUITemplate();
+            };
+            connectionElement.onPlayerSelected += (playerName) => onPlayerConnection?.Invoke(playerName);
+        }
+
+        private void InitATHElement(ATHElement aTHElement)
+        {
+            aTHElement.Init(PlayerCrud.Instance.GetPlayer(SeesionCookie.currentPlayerName));
         }
     }
 }

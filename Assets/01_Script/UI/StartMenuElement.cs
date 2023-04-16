@@ -34,10 +34,10 @@ namespace ui.template
             btn_settings = this.Q<Button>("btn_settings");
             btn_credits = this.Q<Button>("btn_credits");
 
-            btn_start.clicked += () => onStartButton();
-            btn_load.clicked += () => onLoadButton();
-            btn_settings.clicked += () => onSettingsButton();
-            btn_credits.clicked += () => onCreditsButton();
+            btn_start.clicked += () => onStartButton?.Invoke();
+            btn_load.clicked += () => onLoadButton?.Invoke();
+            btn_settings.clicked += () => onSettingsButton?.Invoke();
+            btn_credits.clicked += () => onCreditsButton?.Invoke();
         }
     }
 }

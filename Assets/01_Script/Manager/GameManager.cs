@@ -1,20 +1,3 @@
-/*   
-    GameJam template for unity project
-    Copyright (C) 2023  VladimirChantitch-MarmotteQuantique
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
-
 using sound;
 using ui;
 using System;
@@ -25,6 +8,7 @@ using player;
 using UnityEngine.SceneManagement;
 using scene;
 using savesystem;
+using savesystem.realm;
 
 namespace game_manager
 {
@@ -54,11 +38,29 @@ namespace game_manager
 
         private void Start()
         {
+            HandleCookieData();
+
             BindUI_Events();
-            BindPlayer_Events();
             BindSound_Events();
 
             ChangeTemplate();
+        }
+
+        private void HandleCookieData()
+        {
+            switch (sceneState)
+            {
+                case GameScene.None_scene:
+                    break;
+                case GameScene.Start_scene:
+                    break;
+                case GameScene.Main_scene:
+                    playerManager.Name = SeesionCookie.currentPlayerName;
+                    BindPlayer_Events();
+                    break;
+                case GameScene.End_Scene:
+                    break;
+            }
         }
 
         #region EventBindings
@@ -69,7 +71,11 @@ namespace game_manager
 
         private void BindPlayer_Events()
         {
-
+            playerManager.onPlayerDied += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.Loose);
+                uiManager.ChangeUITemplate();
+            };
         }
 
         private void BindUI_Events()
@@ -78,6 +84,17 @@ namespace game_manager
             {
                 uiManager.onStartGame += scene => LoadScene(scene);
                 uiManager.onBackToMain += scene => LoadScene(scene);
+                uiManager.onPlayerSignIn += player_name =>
+                {
+                    PlayerCrud.Instance.CreateNewPlayer(player_name);
+                    SeesionCookie.currentPlayerName = player_name;
+                    LoadScene(GameScene.Main_scene);
+                };
+                uiManager.onPlayerConnection += (playerName) =>
+                {
+                    SeesionCookie.currentPlayerName = playerName;
+                    LoadScene(GameScene.Main_scene);
+                };
             }
         }
         #endregion
@@ -91,22 +108,6 @@ namespace game_manager
         private void ChangeTemplate()
         {
             uiManager.ChangeUITemplate();
-        }
-
-        /// <summary>
-        /// A method to call a save
-        /// </summary>
-        public void SaveGame()
-        {
-            saveManager.SaveGame();
-        }
-
-        /// <summary>
-        /// A method to call a load
-        /// </summary>
-        public void LoadGame()
-        {
-            saveManager.LoadGame();
         }
         #endregion
     }

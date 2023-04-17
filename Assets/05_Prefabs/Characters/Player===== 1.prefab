@@ -54,7 +54,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ec3935eed9a06fb40a4d3aaa6d134a7b, type: 2}
@@ -1043,6 +1043,7 @@ GameObject:
   - component: {fileID: 6725641214126012207}
   - component: {fileID: 6725641214126012204}
   - component: {fileID: 6725641214126012205}
+  - component: {fileID: 6725641212650113216}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -1166,6 +1167,14 @@ MonoBehaviour:
   dashTrail: {fileID: 6725641213823749554}
   weaponManager: {fileID: 6725641214624569552}
   canTakeDamage: 0
+--- !u!81 &6725641212650113216
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725641214126012211}
+  m_Enabled: 1
 --- !u!1 &6725641214267271556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1358,7 @@ MonoBehaviour:
   poolTransform: {fileID: 0}
   currentWeapon: {fileID: 11400000, guid: f39207f6a2e4ff6429b59dcaec440f06, type: 2}
   currentEquippedWeapon: {fileID: 6725641213420116385}
+  muzzleEffect: {fileID: 8225680122404276590, guid: 2dbf76f8b15c83f428209b87491090d8, type: 3}
   bulletAutoDestructionTimer: 2
 --- !u!1 &6725641214554865439
 GameObject:

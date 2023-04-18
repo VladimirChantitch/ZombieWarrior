@@ -13,6 +13,7 @@ namespace combat.weapon
         [SerializeField] Weapons_Item currentWeapon;
         [SerializeField] Weapon currentEquippedWeapon;
         [SerializeField] GameObject muzzleEffect;
+        [SerializeField] AudioPlayer audioPlayer;
 
         [Header("pooling params")]
         BulletCollider[] bulletColliders;
@@ -27,6 +28,7 @@ namespace combat.weapon
         {
             bulletColliders = new BulletCollider[MaximumAmountOfBullets];
             onFireRateChanged?.Invoke(currentWeapon.FireRate);
+            if (audioPlayer == null) audioPlayer = GetComponent<AudioPlayer>();
         }
 
         public void ChangeWeapon(Weapons_Item weapon)
@@ -68,6 +70,8 @@ namespace combat.weapon
                 {
                     poolCounter = 0;
                 }
+
+                audioPlayer.PlayAudioByName("shoot");
             }
         }
 

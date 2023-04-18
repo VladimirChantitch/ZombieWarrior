@@ -26,6 +26,8 @@ namespace character
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] AudioPlayer audioPlayer;
 
+        [SerializeField] List<CloseCombatDamageCollider> colliders = new List<CloseCombatDamageCollider>();
+
         public event Action onNpcDied;
         bool isDead;
 
@@ -77,6 +79,10 @@ namespace character
                 zombiTakeDamageCollider.CloseCollider();
                 spriteRenderer.sortingOrder = -1;
                 audioPlayer.Stop();
+                colliders.ForEach(c =>
+                {
+                    c.CloseCollider();
+                });
             }
         }
 

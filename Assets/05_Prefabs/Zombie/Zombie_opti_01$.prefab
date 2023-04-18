@@ -829,6 +829,9 @@ MonoBehaviour:
   statSystem: {fileID: 11400000, guid: eb9926c95510dc34d960ab914990806c, type: 2}
   spriteRenderer: {fileID: 7104067279070000941}
   audioPlayer: {fileID: 1158144113}
+  colliders:
+  - {fileID: 1593700042}
+  - {fileID: 460441107}
   _name: b
   _description: b
   audios:

@@ -49,6 +49,7 @@ namespace player
         [SerializeField] CrossAir crossAir;
 
         [SerializeField] SpriteRenderer characterSprite;
+        [SerializeField] AudioPlayer audioPlayer;
 
         [Header("Camera")]
         [SerializeField] Camera camera;
@@ -228,6 +229,7 @@ namespace player
                     dashTrail.enabled = true;
                 }
                 canTakeDamage = false;
+                audioPlayer.PlayAudioByName("dash");
             }
             else
             {

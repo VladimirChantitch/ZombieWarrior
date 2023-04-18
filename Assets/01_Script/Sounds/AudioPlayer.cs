@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class AudioPlayer : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     Coroutine coroutine = null;
+
+    public event Action onSoundFinished;
+
     public void PlayAudioByName(string name)
     {
         soundDrawer clip = ResourcesManager.Instance.GetAudio(name);
@@ -26,9 +30,17 @@ public class AudioPlayer : MonoBehaviour
         coroutine = StartCoroutine(stopClip(length));
     }
 
+    internal void Stop()
+    {
+        StopCoroutine(coroutine);
+        audioSource.Stop();
+        onSoundFinished = null;
+    }
+
     IEnumerator stopClip(float time)
     {
         yield return new WaitForSeconds(time);
         audioSource.Stop();
+        onSoundFinished?.Invoke();
     }
 }

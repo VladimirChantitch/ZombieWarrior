@@ -6,7 +6,6 @@ using UnityEngine;
 public class StartMenuAudio : MonoBehaviour
 {
     [SerializeField] AudioPlayer mainMusic = null;
-    [SerializeField] AudioPlayer buttonAudio = null;
 
     public static StartMenuAudio Instance { get; private set; }
 
@@ -31,10 +30,5 @@ public class StartMenuAudio : MonoBehaviour
     private void PlayMusic()
     {
         mainMusic.PlayAudioByName("intro");
-    }
-
-    public void PlayButtonAudio()
-    {
-        buttonAudio.PlayAudioByName("button");
     }
 }

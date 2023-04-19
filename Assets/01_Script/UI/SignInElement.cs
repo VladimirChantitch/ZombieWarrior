@@ -32,13 +32,13 @@ namespace UI.SignIn
             btn_cancel.clicked += () =>
             {
                 onCancel?.Invoke();
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
 
             btn_validate.clicked += () =>
             {
                 onNewPlayerSignIn?.Invoke(tf_name.text);
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
         }
     }

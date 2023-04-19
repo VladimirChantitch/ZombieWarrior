@@ -36,22 +36,22 @@ namespace ui.template
 
             btn_start.clicked += () => {
                 onStartButton?.Invoke();
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
             btn_load.clicked += () =>
             {
                 onLoadButton?.Invoke();
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
             btn_settings.clicked += () =>
             {
                 onSettingsButton?.Invoke();
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
             btn_credits.clicked += () =>
             {
                 onCreditsButton?.Invoke();
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
         }
     }

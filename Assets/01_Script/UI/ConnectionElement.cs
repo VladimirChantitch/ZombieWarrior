@@ -29,7 +29,7 @@ namespace UI.Connection
             btn_cancel.clicked += () =>
             {
                 onCancel?.Invoke();
-                StartMenuAudio.Instance.PlayButtonAudio();
+                ButtonAudio.Instance.PlayButtonAudio();
             };
         }
 
@@ -43,7 +43,7 @@ namespace UI.Connection
                 connectionButtonElement.onSelected += (player_name) =>
                 {
                     onPlayerSelected?.Invoke(player_name);
-                    StartMenuAudio.Instance.PlayButtonAudio();
+                    ButtonAudio.Instance.PlayButtonAudio();
                 };
 
                 scrollView.Add(ve);

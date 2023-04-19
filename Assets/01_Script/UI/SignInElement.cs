@@ -40,6 +40,11 @@ namespace UI.SignIn
                 onNewPlayerSignIn?.Invoke(tf_name.text);
                 ButtonAudio.Instance.PlayButtonAudio();
             };
+
+            tf_name.RegisterValueChangedCallback((value) =>
+            {
+                ButtonAudio.Instance.PlayButtonAudio();
+            });
         }
     }
 }

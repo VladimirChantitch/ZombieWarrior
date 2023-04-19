@@ -124,7 +124,6 @@ namespace ui
             };
             startMenuElement.onCreditsButton += () =>
             {
-                ResourcesManager.Instance.ChangeSubState(GameState.Leader_board);
                 ChangeUITemplate();
             };
         }

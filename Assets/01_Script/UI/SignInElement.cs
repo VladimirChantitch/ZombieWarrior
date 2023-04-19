@@ -29,8 +29,17 @@ namespace UI.SignIn
             btn_validate = this.Q<Button>("btn_validate");
             btn_cancel = this.Q<Button>("btn_cancel");
 
-            btn_cancel.clicked += () => onCancel?.Invoke();
-            btn_validate.clicked += () => onNewPlayerSignIn?.Invoke(tf_name.text);
+            btn_cancel.clicked += () =>
+            {
+                onCancel?.Invoke();
+                StartMenuAudio.Instance.PlayButtonAudio();
+            };
+
+            btn_validate.clicked += () =>
+            {
+                onNewPlayerSignIn?.Invoke(tf_name.text);
+                StartMenuAudio.Instance.PlayButtonAudio();
+            };
         }
     }
 }

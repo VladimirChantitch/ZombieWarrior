@@ -18,7 +18,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
   weaponPrefab: {fileID: 7806897651744763387, guid: 4309b6d435df2964bae8832a9564fe4d, type: 3}
   damageData:
-    damageAmount: -15
+    damageAmount: -30
   defaultBullet: {fileID: 11400000, guid: 39fa5e64fdeeefd45b9e247b4403aa93, type: 2}
   bulletSpeed: 1000
-  fireRate: 0.4
+  fireRate: 0.2

@@ -26,8 +26,11 @@ public class LeaderBoardElement : AbstractTemplateElement
             PlayerInformation = this.Q<VisualElement>("PlayersInformation");
 
             btn_try_again = this.Q<Button>("btn_try_again");
-            btn_try_again.clicked += () => onPlayAgain?.Invoke();
-
+            btn_try_again.clicked += () =>
+            {
+                onPlayAgain?.Invoke();
+                ButtonAudio.Instance.PlayButtonAudio();
+            };
             IQueryable<PlayerRealm> allPlayer = PlayerCrud.Instance.GetAllPlayers();
             int i = 0;
             foreach (var player in allPlayer)

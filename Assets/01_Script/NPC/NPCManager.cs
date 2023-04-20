@@ -24,12 +24,22 @@ namespace character
         [SerializeField] StatComponent statComponent;
         [SerializeField] StatSystem statSystem;
         [SerializeField] SpriteRenderer spriteRenderer;
+        [SerializeField] AudioPlayer audioPlayer;
+
+        [SerializeField] List<CloseCombatDamageCollider> colliders = new List<CloseCombatDamageCollider>();
 
         public event Action onNpcDied;
         bool isDead;
 
         [SerializeField] string _name;
         [SerializeField] string _description;
+
+        [SerializeField]
+        List<string> audios = new List<string>()
+        {
+            "zombie_01",
+            "zombie_02"
+        };
 
         IDamageable iDamageable = null; 
 
@@ -39,6 +49,13 @@ namespace character
             zombiTakeDamageCollider.onTakeDamage += data => { iDamageable.TakeDamage(data); };
             brain.onAnimationPlayed.AddListener((s, b, a) => HandleAnimationEvent(s, b, a));
             statComponent = new StatComponent(statSystem.stats);
+            if (audioPlayer == null) audioPlayer = GetComponent<AudioPlayer>();
+            audioPlayer.onSoundFinished += () => PlayRandomSound();
+        }
+
+        private void Start()
+        {
+            PlayRandomSound();
         }
 
         private void HandleAnimationEvent(string s, bool b, Action a)
@@ -61,6 +78,11 @@ namespace character
                 PlayerCrud.Instance.IncreaseHighScore(SeesionCookie.currentPlayerName, (int)statComponent.GetStatValue(E_Stats.value));
                 zombiTakeDamageCollider.CloseCollider();
                 spriteRenderer.sortingOrder = -1;
+                audioPlayer.Stop();
+                colliders.ForEach(c =>
+                {
+                    c.CloseCollider();
+                });
             }
         }
 
@@ -75,6 +97,12 @@ namespace character
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             spriteRenderer.color = Color.white;
+        }
+
+        private void PlayRandomSound()
+        {
+            string clip = audios[UnityEngine.Random.Range(0, audios.Count)];
+            audioPlayer.PlayAudioByName(clip);
         }
     }
 }

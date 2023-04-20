@@ -33,9 +33,11 @@ namespace character.ai
             HandleState(currentState);
         }
 
+        bool stateLock;
+
         public void HandleState(AI_States aI_States)
         {
-            if (aI_States == AI_States.None || currentState == AI_States.None)
+            if (aI_States == AI_States.None || currentState == AI_States.None || stateLock)
             {   
                 currentState = AI_States.None;
                 return;
@@ -53,6 +55,11 @@ namespace character.ai
             {
                 StopCoroutine(coroutine);
                 coroutine = StartCoroutine(possibleState[Random.Range(0, possibleState.Count)].RunActivity());
+            }
+
+            if (aI_States == AI_States.Dying)
+            {
+                stateLock = true;
             }
         }
     }

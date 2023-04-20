@@ -13,10 +13,16 @@ public class Spawner : MonoBehaviour
     short currentAmount;
     float time;
 
+    public bool canSpawn = false;
+
+    public event Action onZombieKilled;
 
     private void Update()
     {
-        SpawnAnEnemy();
+        if (canSpawn)
+        {
+            SpawnAnEnemy();
+        }
     }
 
     private void SpawnAnEnemy()
@@ -37,5 +43,6 @@ public class Spawner : MonoBehaviour
     private void HandleAnNpcDeath()
     {
         currentAmount -= 1;
+        onZombieKilled?.Invoke();
     }
 }

@@ -26,6 +26,11 @@ namespace savesystem
             };
             realm = Realm.GetInstance(config);
             new PlayerCrud(realm);
+#if (UNITY_EDITOR)
+            PlayerCrud.Instance.CreateNewPlayer("");
+            PlayerCrud.Instance.RemovePlayer("");
+            PlayerCrud.Instance.CreateNewPlayer("");
+#endif
         }
 
         private void OnDisable()

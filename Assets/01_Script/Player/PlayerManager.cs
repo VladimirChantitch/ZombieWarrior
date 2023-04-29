@@ -29,6 +29,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ui;
 using UnityEngine;
 
 namespace player
@@ -52,7 +53,7 @@ namespace player
         [SerializeField] AudioPlayer audioPlayer;
 
         [Header("Camera")]
-        [SerializeField] Camera camera;
+        [SerializeField] public Camera camera;
         [SerializeField] CameraShake cameraShake;
 
         [Header("colliders")]
@@ -66,6 +67,7 @@ namespace player
         [SerializeField] WeaponManager  weaponManager;
 
         [SerializeField] bool canTakeDamage = true;
+        public event Action onPauseAction;
 
 
         Coroutine autoShootCorroutine;
@@ -89,7 +91,7 @@ namespace player
 
         private void Start()
         {
-            SubscriteToInputs();
+            SubscriteToInputs(GetOnPauseActionPlayerManager());
             InitEvents();
             canTakeDamage = true;
             PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
@@ -103,7 +105,12 @@ namespace player
             CURRENT_POSITION = transform.position;
         }
 
-        private void SubscriteToInputs()
+        private Action GetOnPauseActionPlayerManager()
+        {
+            return onPauseAction;
+        }
+
+        private void SubscriteToInputs(Action onPauseActionPlayerManager)
         {
             if (inputManager != null)
             {
@@ -114,7 +121,12 @@ namespace player
                 inputManager.onPrimaryAction += () => Shoot();
                 inputManager.onRealeasePrimary += () => ToggleOnOffAutoShoot(false);
                 inputManager.onHoldPrimary += () => ToggleOnOffAutoShoot(true);
-
+                inputManager.onPauseAction += () =>
+                {
+                    Debug.Log("Pause event player manager");
+                    camera.enabled = false;
+                    onPauseAction?.Invoke();
+                };
                 weaponManager.onFireRateChanged += (f) => currentFireRate = f;
             }
             else

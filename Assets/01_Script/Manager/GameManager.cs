@@ -20,6 +20,8 @@ namespace game_manager
         [SerializeField] PlayerManager playerManager = null;
         [SerializeField] SceneHandler sceneHandler = null;
         [SerializeField] SaveManager saveManager = null;
+        public event Action onPauseAction;
+
 
         GameScene sceneState;
         GameState gameState;
@@ -76,6 +78,12 @@ namespace game_manager
                 ResourcesManager.Instance.ChangeSubState(GameState.Loose);
                 uiManager.ChangeUITemplate();
             };
+            playerManager.onPauseAction += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.PauseMenu);
+                uiManager.ChangeUITemplate();
+                onPauseAction?.Invoke();
+            };
         }
 
         private void BindUI_Events()
@@ -84,6 +92,7 @@ namespace game_manager
             {
                 uiManager.onStartGame += scene => LoadScene(scene);
                 uiManager.onBackToMain += scene => LoadScene(scene);
+                uiManager.onBackToGame += () => playerManager.camera.enabled = true;
                 uiManager.onPlayerSignIn += player_name =>
                 {
                     PlayerCrud.Instance.CreateNewPlayer(player_name);
@@ -102,6 +111,7 @@ namespace game_manager
         #region Redistribution Methods
         private void LoadScene(GameScene gameScene)
         {
+            Debug.Log(gameScene.ToString());
             sceneHandler.LoadScene(gameScene);
         }
 

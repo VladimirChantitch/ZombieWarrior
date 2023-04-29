@@ -207,8 +207,8 @@ MonoBehaviour:
   templates:
   - gameState: 0
     template: {fileID: 9197481963319205126, guid: 248e0a906e71dbf4ca531a355c7d9681, type: 3}
-  - gameState: 5
-    template: {fileID: 9197481963319205126, guid: 5669806b624f13747aeb1175d20f23b2, type: 3}
+  - gameState: 8
+    template: {fileID: 9197481963319205126, guid: acc8243f6d55e344daddb25f0d36ef29, type: 3}
   - gameState: 6
     template: {fileID: 9197481963319205126, guid: 766fa2951fec72445981c8ffa5898bfd, type: 3}
   - gameState: 7
@@ -640,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui_Doc: {fileID: 867985404}
+  gameManager: {fileID: 0}
 --- !u!114 &867985404
 MonoBehaviour:
   m_ObjectHideFlags: 0

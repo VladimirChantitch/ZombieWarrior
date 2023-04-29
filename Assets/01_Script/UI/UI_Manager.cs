@@ -16,6 +16,8 @@
  */
 
 
+using game_manager;
+using player;
 using savesystem.realm;
 using System;
 using System.Collections;
@@ -35,16 +37,20 @@ namespace ui
         [SerializeField] UIDocument ui_Doc = null;
         VisualElement currentRoot = null;
         AbstractTemplateElement currentTemplate = null;
+        [SerializeField] Camera camera;
 
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
+        public event Action onBackToGame;
         public event Action<GameState> onLeaderBoard;
         public event Action<string> onPlayerSignIn;
         public event Action<string> onPlayerConnection;
+        public GameManager gameManager;
 
         public void Awake()
         {
             if (ui_Doc == null) GetComponent<UIDocument>();
+            if (gameManager == null) gameManager = FindObjectOfType<GameManager>();
         }
 
         public void ChangeUITemplate()
@@ -85,6 +91,9 @@ namespace ui
                         break;
                     case ATHElement aTHElement:
                         InitATHElement(aTHElement);
+                        break;
+                    case PauseMenuElement pauseMenuElement:
+                        InitPauseMenuElement(pauseMenuElement);
                         break;
                 }
             }
@@ -160,6 +169,22 @@ namespace ui
         private void InitATHElement(ATHElement aTHElement)
         {
             aTHElement.Init(PlayerCrud.Instance.GetPlayer(SeesionCookie.currentPlayerName));
+        }
+
+        private void InitPauseMenuElement(PauseMenuElement pauseMenuElement)
+        {
+            pauseMenuElement.Init();
+            gameManager.onPauseAction += () =>
+            {
+                Debug.Log("Pause Menu Launched");
+            };
+            pauseMenuElement.onGoBack += () =>
+            {
+                ResourcesManager.Instance.ChangeSubState(GameState.Playing);
+                ChangeUITemplate();
+                onBackToGame.Invoke();
+                Time.timeScale = 1;
+            };
         }
     }
 }

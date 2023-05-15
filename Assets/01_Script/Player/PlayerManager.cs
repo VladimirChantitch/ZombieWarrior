@@ -91,6 +91,7 @@ namespace player
 
         private void Start()
         {
+            SubscriteToInputs();
             InitEvents();
             canTakeDamage = true;
             PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
@@ -104,12 +105,11 @@ namespace player
             CURRENT_POSITION = transform.position;
         }
 
-        private void SubscriteToInputs(Action onPauseActionPlayerManager)
+        private void SubscriteToInputs()
         {
             if (inputManager != null)
             {
                 inputManager.onInteractPressed += () => OnInteract();
-
                 inputManager.onMove += direction => MovePlayer(direction);
                 inputManager.onDashAction += direction => Dash(direction);
                 inputManager.onPrimaryAction += () => Shoot();

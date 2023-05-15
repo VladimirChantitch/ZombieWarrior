@@ -20,8 +20,6 @@ namespace game_manager
         [SerializeField] PlayerManager playerManager = null;
         [SerializeField] SceneHandler sceneHandler = null;
         [SerializeField] SaveManager saveManager = null;
-        public event Action onPauseAction;
-
 
         GameScene sceneState;
         GameState gameState;
@@ -80,9 +78,18 @@ namespace game_manager
             };
             playerManager.onPauseAction += () =>
             {
-                ResourcesManager.Instance.ChangeSubState(GameState.PauseMenu);
-                uiManager.ChangeUITemplate();
-                onPauseAction?.Invoke();
+                if (ResourcesManager.Instance.GameState != GameState.PauseMenu)
+                {
+                    ResourcesManager.Instance.ChangeSubState(GameState.PauseMenu);
+                    uiManager.ChangeUITemplate();
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    ResourcesManager.Instance.ChangeSubState(GameState.Playing);
+                    uiManager.ChangeUITemplate();
+                    Time.timeScale = 1;
+                }
             };
         }
 
@@ -92,7 +99,7 @@ namespace game_manager
             {
                 uiManager.onStartGame += scene => LoadScene(scene);
                 uiManager.onBackToMain += scene => LoadScene(scene);
-                uiManager.onBackToGame += () => playerManager.camera.enabled = true;
+                uiManager.onBackToGame += () => HandlePause(false);
                 uiManager.onPlayerSignIn += player_name =>
                 {
                     PlayerCrud.Instance.CreateNewPlayer(player_name);
@@ -105,6 +112,18 @@ namespace game_manager
                     LoadScene(GameScene.Main_scene);
                 };
             }
+        }
+
+        private void HandlePause(bool isPaused)
+        {
+            if (isPaused)
+            {
+                Time.timeScale = 0;
+            }
+            else{
+                Time.timeScale = 1;
+            }
+
         }
         #endregion
 

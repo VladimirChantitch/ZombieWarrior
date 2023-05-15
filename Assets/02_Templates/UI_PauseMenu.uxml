@@ -3,11 +3,9 @@
     <ui.template.PauseMenuElement style="align-items: center; justify-content: center; height: 903px;">
         <ui:VisualElement name="PauseMenuBlock" style="justify-content: center; align-items: center; flex-grow: 0; background-color: rgba(91, 91, 91, 0.5); width: 500px; max-width: 100%;">
             <ui:VisualElement name="ButtonsBlock">
-                <ui:Button text="go back" display-tooltip-when-elided="true" name="BackToGame" class="buttonBG menuBG" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; flex-grow: 1; flex-shrink: 1; flex-basis: 100%; padding-left: 18px; padding-right: 19px; padding-top: 4px; padding-bottom: 4px; color: rgb(236, 0, 0);" />
-                <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="MainMenu" class="buttonBG menuBG" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; padding-left: 5px; padding-right: 10px; color: rgba(236, 0, 0, 255);" />
-                <ui:Button text="Settings" display-tooltip-when-elided="true" name="Settings" class="buttonBG menuBG" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; padding-left: 18px; padding-right: 16px; color: rgba(236, 0, 0, 255);" />
-                <ui:Button text="Save" display-tooltip-when-elided="true" name="Save" class="buttonBG menuBG" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; padding-right: 24px; padding-left: 26px; color: rgba(236, 0, 0, 255);" />
-                <ui:Button text="Load" display-tooltip-when-elided="true" name="Load" class="buttonBG menuBG" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; padding-left: 23px; padding-right: 25px; color: rgba(236, 0, 0, 255);" />
+                <ui:Button text="Resume" display-tooltip-when-elided="true" name="btn_resume" class="buttonBG menuBG small_button" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; flex-grow: 1; flex-shrink: 1; flex-basis: 100%; padding-left: 18px; padding-right: 19px; padding-top: 4px; padding-bottom: 4px; color: rgb(236, 0, 0);" />
+                <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="btn_mainMenu" class="buttonBG menuBG small_button" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; padding-left: 5px; padding-right: 10px; color: rgb(236, 0, 0); flex-shrink: 1; flex-grow: 1;" />
+                <ui:Button text="Quit" display-tooltip-when-elided="true" name="btn_quit" class="buttonBG menuBG small_button" style="margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 19px; padding-left: 5px; padding-right: 10px; color: rgb(236, 0, 0); flex-shrink: 1; flex-grow: 1;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui.template.PauseMenuElement>

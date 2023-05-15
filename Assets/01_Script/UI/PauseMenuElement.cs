@@ -15,10 +15,14 @@ namespace ui.template
         {
         }
 
-        public event Action onGoBack;
+        public event Action onResume;
+        public event Action onMainMenu;
+        public event Action onQuit;
 
-        Button goBack = null;
 
+        Button btn_resume = null;
+        Button btn_mainMenu = null;
+        Button btn_quit = null;
 
         public void Init()
         {
@@ -28,13 +32,26 @@ namespace ui.template
 
         private void BindButtons()
         {
-            goBack = this.Q<Button>("BackToGame");
+            btn_resume = this.Q<Button>("btn_resume");
+            btn_mainMenu = this.Q<Button>("btn_mainMenu");
+            btn_quit = this.Q<Button>("btn_quit");
 
-            goBack.clicked += () =>
+            btn_resume.clicked += () =>
             {
-                onGoBack?.Invoke();
-                this.Q().AddToClassList("hide");
                 ButtonAudio.Instance.PlayButtonAudio();
+                onResume?.Invoke();
+            };
+
+            btn_mainMenu.clicked += () =>
+            {
+                ButtonAudio.Instance.PlayButtonAudio();
+                onMainMenu?.Invoke();
+            };
+
+            btn_quit.clicked += () =>
+            {
+                ButtonAudio.Instance.PlayButtonAudio(); ;
+                onQuit?.Invoke();
             };
         }
     }

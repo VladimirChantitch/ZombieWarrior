@@ -174,17 +174,16 @@ namespace ui
         private void InitPauseMenuElement(PauseMenuElement pauseMenuElement)
         {
             pauseMenuElement.Init();
-            gameManager.onPauseAction += () =>
-            {
-                Debug.Log("Pause Menu Launched");
-            };
-            pauseMenuElement.onGoBack += () =>
+            pauseMenuElement.onResume += () =>
             {
                 ResourcesManager.Instance.ChangeSubState(GameState.Playing);
                 ChangeUITemplate();
                 onBackToGame.Invoke();
-                Time.timeScale = 1;
             };
+
+            pauseMenuElement.onMainMenu += () => onBackToMain?.Invoke(GameScene.Start_scene);
+
+            pauseMenuElement.onQuit += () => Application.Quit();
         }
     }
 }

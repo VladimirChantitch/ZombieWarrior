@@ -99,12 +99,7 @@ namespace inputs
             inputs.KeyboardActions.MapAction.performed += i => onMapAction?.Invoke();
             inputs.KeyboardActions.UseItemAction.performed += i => onUseItemAction?.Invoke();
             inputs.KeyboardActions.DashAction.performed += i => onDashAction?.Invoke(direction);
-            inputs.KeyboardActions.PauseAction.performed += i =>
-            {
-                Debug.Log("Pause event input");
-                onPauseAction?.Invoke();
-                Time.timeScale = 0;
-            };
+            inputs.KeyboardActions.PauseAction.performed += i => onPauseAction?.Invoke();
         }
 
         void FixedUpdate()

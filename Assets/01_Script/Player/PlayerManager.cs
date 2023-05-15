@@ -91,7 +91,6 @@ namespace player
 
         private void Start()
         {
-            SubscriteToInputs(GetOnPauseActionPlayerManager());
             InitEvents();
             canTakeDamage = true;
             PlayerCrud.Instance.SetPlayerHealth(SeesionCookie.currentPlayerName, statComponent.GetStatValue(E_Stats.Life));
@@ -105,11 +104,6 @@ namespace player
             CURRENT_POSITION = transform.position;
         }
 
-        private Action GetOnPauseActionPlayerManager()
-        {
-            return onPauseAction;
-        }
-
         private void SubscriteToInputs(Action onPauseActionPlayerManager)
         {
             if (inputManager != null)
@@ -121,12 +115,7 @@ namespace player
                 inputManager.onPrimaryAction += () => Shoot();
                 inputManager.onRealeasePrimary += () => ToggleOnOffAutoShoot(false);
                 inputManager.onHoldPrimary += () => ToggleOnOffAutoShoot(true);
-                inputManager.onPauseAction += () =>
-                {
-                    Debug.Log("Pause event player manager");
-                    camera.enabled = false;
-                    onPauseAction?.Invoke();
-                };
+                inputManager.onPauseAction += () => onPauseAction?.Invoke();
                 weaponManager.onFireRateChanged += (f) => currentFireRate = f;
             }
             else

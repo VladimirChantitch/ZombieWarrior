@@ -34,6 +34,8 @@ namespace game_manager
 
             sceneState = ResourcesManager.Instance.SceneState;
             gameState = ResourcesManager.Instance.GameState;
+
+            Time.timeScale = 1;
         }
 
         private void Start()

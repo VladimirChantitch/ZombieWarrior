@@ -26,7 +26,6 @@ namespace ui.template
 
         public void Init()
         {
-            this.Q<VisualElement>("PauseMenuBlock").AddToClassList("opacity");
             BindButtons();
         }
 

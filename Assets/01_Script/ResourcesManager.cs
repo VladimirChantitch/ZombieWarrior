@@ -78,6 +78,8 @@ public class ResourcesManager : MonoBehaviour
     /// <returns>returns null if no scene can be found</returns>
     public string GetScene(GameScene gameScene)
     {
+        Debug.Log("We rae in");
+        Debug.Log(gameScene.ToString());
         if (scenes != null)
         {
             for(int i = 0; i< scenes.Length; i++)

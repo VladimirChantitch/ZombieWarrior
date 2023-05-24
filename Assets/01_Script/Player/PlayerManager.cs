@@ -29,6 +29,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ui;
 using UnityEngine;
 
 namespace player
@@ -52,7 +53,7 @@ namespace player
         [SerializeField] AudioPlayer audioPlayer;
 
         [Header("Camera")]
-        [SerializeField] Camera camera;
+        [SerializeField] public Camera camera;
         [SerializeField] CameraShake cameraShake;
 
         [Header("colliders")]
@@ -66,6 +67,7 @@ namespace player
         [SerializeField] WeaponManager  weaponManager;
 
         [SerializeField] bool canTakeDamage = true;
+        public event Action onPauseAction;
 
 
         Coroutine autoShootCorroutine;
@@ -108,13 +110,12 @@ namespace player
             if (inputManager != null)
             {
                 inputManager.onInteractPressed += () => OnInteract();
-
                 inputManager.onMove += direction => MovePlayer(direction);
                 inputManager.onDashAction += direction => Dash(direction);
                 inputManager.onPrimaryAction += () => Shoot();
                 inputManager.onRealeasePrimary += () => ToggleOnOffAutoShoot(false);
                 inputManager.onHoldPrimary += () => ToggleOnOffAutoShoot(true);
-
+                inputManager.onPauseAction += () => onPauseAction?.Invoke();
                 weaponManager.onFireRateChanged += (f) => currentFireRate = f;
             }
             else

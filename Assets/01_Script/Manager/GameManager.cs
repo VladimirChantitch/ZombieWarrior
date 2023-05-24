@@ -34,6 +34,8 @@ namespace game_manager
 
             sceneState = ResourcesManager.Instance.SceneState;
             gameState = ResourcesManager.Instance.GameState;
+
+            Time.timeScale = 1;
         }
 
         private void Start()
@@ -76,6 +78,21 @@ namespace game_manager
                 ResourcesManager.Instance.ChangeSubState(GameState.Loose);
                 uiManager.ChangeUITemplate();
             };
+            playerManager.onPauseAction += () =>
+            {
+                if (ResourcesManager.Instance.GameState != GameState.PauseMenu)
+                {
+                    ResourcesManager.Instance.ChangeSubState(GameState.PauseMenu);
+                    uiManager.ChangeUITemplate();
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    ResourcesManager.Instance.ChangeSubState(GameState.Playing);
+                    uiManager.ChangeUITemplate();
+                    Time.timeScale = 1;
+                }
+            };
         }
 
         private void BindUI_Events()
@@ -84,6 +101,7 @@ namespace game_manager
             {
                 uiManager.onStartGame += scene => LoadScene(scene);
                 uiManager.onBackToMain += scene => LoadScene(scene);
+                uiManager.onBackToGame += () => HandlePause(false);
                 uiManager.onPlayerSignIn += player_name =>
                 {
                     PlayerCrud.Instance.CreateNewPlayer(player_name);
@@ -97,11 +115,24 @@ namespace game_manager
                 };
             }
         }
+
+        private void HandlePause(bool isPaused)
+        {
+            if (isPaused)
+            {
+                Time.timeScale = 0;
+            }
+            else{
+                Time.timeScale = 1;
+            }
+
+        }
         #endregion
 
         #region Redistribution Methods
         private void LoadScene(GameScene gameScene)
         {
+            Debug.Log(gameScene.ToString());
             sceneHandler.LoadScene(gameScene);
         }
 

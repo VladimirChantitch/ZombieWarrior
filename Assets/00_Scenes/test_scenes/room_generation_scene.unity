@@ -192,7 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725641212943243654, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725641212943243657, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6725641214126012205, guid: 8d91add2dfb5f99418f7155f80788018, type: 3}
       propertyPath: camera
@@ -418,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &918776507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +481,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1023622813
 GameObject:
@@ -508,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab4f077f60273941929b4c70f0479e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MainAudioVolume: 0
 --- !u!4 &1023622815
 Transform:
   m_ObjectHideFlags: 0
@@ -740,6 +745,7 @@ MonoBehaviour:
     template: {fileID: 9197481963319205126, guid: 248e0a906e71dbf4ca531a355c7d9681, type: 3}
   templateContainers: []
   tick: 0.5
+  audioContainers: []
 --- !u!4 &1812999331
 Transform:
   m_ObjectHideFlags: 0

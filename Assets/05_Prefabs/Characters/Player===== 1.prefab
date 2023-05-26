@@ -1045,7 +1045,7 @@ GameObject:
   - component: {fileID: 6725641214126012205}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1349,6 +1349,7 @@ MonoBehaviour:
   poolTransform: {fileID: 0}
   currentWeapon: {fileID: 11400000, guid: f39207f6a2e4ff6429b59dcaec440f06, type: 2}
   currentEquippedWeapon: {fileID: 6725641213420116385}
+  muzzleEffect: {fileID: 0}
   bulletAutoDestructionTimer: 2
 --- !u!1 &6725641214554865439
 GameObject:

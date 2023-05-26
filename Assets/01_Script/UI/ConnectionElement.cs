@@ -26,7 +26,11 @@ namespace UI.Connection
             InstantiateNames(playerRealms);
 
             btn_cancel = this.Q<Button>("btn_cancel");
-            btn_cancel.clicked += () => onCancel?.Invoke();
+            btn_cancel.clicked += () =>
+            {
+                onCancel?.Invoke();
+                ButtonAudio.Instance.PlayButtonAudio();
+            };
         }
 
         private void InstantiateNames(IQueryable<PlayerRealm> playerRealms)
@@ -36,7 +40,11 @@ namespace UI.Connection
                 VisualElement ve = ResourcesManager.Instance.GetTemplateFragment("connectionButton").CloneTree();
                 ConnectionButtonElement connectionButtonElement = ve.Q<ConnectionButtonElement>();
                 connectionButtonElement.Init(playerRealm);
-                connectionButtonElement.onSelected += (player_name) => onPlayerSelected?.Invoke(player_name); 
+                connectionButtonElement.onSelected += (player_name) =>
+                {
+                    onPlayerSelected?.Invoke(player_name);
+                    ButtonAudio.Instance.PlayButtonAudio();
+                };
 
                 scrollView.Add(ve);
             }

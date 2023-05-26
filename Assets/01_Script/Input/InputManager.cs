@@ -47,6 +47,7 @@ namespace inputs
         public event Action onUseItemAction;
         public event Action onHoldPrimary;
         public event Action onRealeasePrimary;
+        public event Action onPauseAction;
 
         public event Action<Vector2> onDashAction;
         public event Action<Vector2> onMove;
@@ -97,7 +98,8 @@ namespace inputs
             inputs.KeyboardActions.SkillTreeAction.performed += i => onSkillTreeAction?.Invoke();
             inputs.KeyboardActions.MapAction.performed += i => onMapAction?.Invoke();
             inputs.KeyboardActions.UseItemAction.performed += i => onUseItemAction?.Invoke();
-            inputs.KeyboardActions.DashAction.performed += i => onDashAction?.Invoke(direction);        
+            inputs.KeyboardActions.DashAction.performed += i => onDashAction?.Invoke(direction);
+            inputs.KeyboardActions.PauseAction.performed += i => onPauseAction?.Invoke();
         }
 
         void FixedUpdate()

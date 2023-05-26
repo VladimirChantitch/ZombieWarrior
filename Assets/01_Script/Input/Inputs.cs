@@ -249,6 +249,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""69953f0a-6ab4-4113-b286-54a44699a614"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -328,6 +337,17 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""action"": ""DashAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f7a3514-8404-470e-9ebb-52ffde977067"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -352,6 +372,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_KeyboardActions_MapAction = m_KeyboardActions.FindAction("MapAction", throwIfNotFound: true);
         m_KeyboardActions_UseItemAction = m_KeyboardActions.FindAction("UseItemAction", throwIfNotFound: true);
         m_KeyboardActions_DashAction = m_KeyboardActions.FindAction("DashAction", throwIfNotFound: true);
+        m_KeyboardActions_PauseAction = m_KeyboardActions.FindAction("PauseAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -508,6 +529,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardActions_MapAction;
     private readonly InputAction m_KeyboardActions_UseItemAction;
     private readonly InputAction m_KeyboardActions_DashAction;
+    private readonly InputAction m_KeyboardActions_PauseAction;
     public struct KeyboardActionsActions
     {
         private @Inputs m_Wrapper;
@@ -519,6 +541,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @MapAction => m_Wrapper.m_KeyboardActions_MapAction;
         public InputAction @UseItemAction => m_Wrapper.m_KeyboardActions_UseItemAction;
         public InputAction @DashAction => m_Wrapper.m_KeyboardActions_DashAction;
+        public InputAction @PauseAction => m_Wrapper.m_KeyboardActions_PauseAction;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -549,6 +572,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @DashAction.started -= m_Wrapper.m_KeyboardActionsActionsCallbackInterface.OnDashAction;
                 @DashAction.performed -= m_Wrapper.m_KeyboardActionsActionsCallbackInterface.OnDashAction;
                 @DashAction.canceled -= m_Wrapper.m_KeyboardActionsActionsCallbackInterface.OnDashAction;
+                @PauseAction.started -= m_Wrapper.m_KeyboardActionsActionsCallbackInterface.OnPauseAction;
+                @PauseAction.performed -= m_Wrapper.m_KeyboardActionsActionsCallbackInterface.OnPauseAction;
+                @PauseAction.canceled -= m_Wrapper.m_KeyboardActionsActionsCallbackInterface.OnPauseAction;
             }
             m_Wrapper.m_KeyboardActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -574,6 +600,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @DashAction.started += instance.OnDashAction;
                 @DashAction.performed += instance.OnDashAction;
                 @DashAction.canceled += instance.OnDashAction;
+                @PauseAction.started += instance.OnPauseAction;
+                @PauseAction.performed += instance.OnPauseAction;
+                @PauseAction.canceled += instance.OnPauseAction;
             }
         }
     }
@@ -598,5 +627,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnMapAction(InputAction.CallbackContext context);
         void OnUseItemAction(InputAction.CallbackContext context);
         void OnDashAction(InputAction.CallbackContext context);
+        void OnPauseAction(InputAction.CallbackContext context);
     }
 }

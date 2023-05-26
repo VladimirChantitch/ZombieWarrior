@@ -43,5 +43,6 @@ public enum GameState
     Loose,
     Leader_board,
     NewUserScreen,
-    ConnectionScreen
+    ConnectionScreen,
+    PauseMenu
 }

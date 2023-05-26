@@ -34,10 +34,25 @@ namespace ui.template
             btn_settings = this.Q<Button>("btn_settings");
             btn_credits = this.Q<Button>("btn_credits");
 
-            btn_start.clicked += () => onStartButton?.Invoke();
-            btn_load.clicked += () => onLoadButton?.Invoke();
-            btn_settings.clicked += () => onSettingsButton?.Invoke();
-            btn_credits.clicked += () => onCreditsButton?.Invoke();
+            btn_start.clicked += () => {
+                onStartButton?.Invoke();
+                ButtonAudio.Instance.PlayButtonAudio();
+            };
+            btn_load.clicked += () =>
+            {
+                onLoadButton?.Invoke();
+                ButtonAudio.Instance.PlayButtonAudio();
+            };
+            btn_settings.clicked += () =>
+            {
+                onSettingsButton?.Invoke();
+                ButtonAudio.Instance.PlayButtonAudio();
+            };
+            btn_credits.clicked += () =>
+            {
+                onCreditsButton?.Invoke();
+                ButtonAudio.Instance.PlayButtonAudio();
+            };
         }
     }
 }

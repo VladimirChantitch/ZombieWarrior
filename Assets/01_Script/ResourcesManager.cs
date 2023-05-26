@@ -78,6 +78,8 @@ public class ResourcesManager : MonoBehaviour
     /// <returns>returns null if no scene can be found</returns>
     public string GetScene(GameScene gameScene)
     {
+        Debug.Log("We rae in");
+        Debug.Log(gameScene.ToString());
         if (scenes != null)
         {
             for(int i = 0; i< scenes.Length; i++)
@@ -190,5 +192,22 @@ public class ResourcesManager : MonoBehaviour
     public const string ZB_DEATH_ANIMATION = "Z_01_Dead";
     public const string ZB_RUN_ANIMATION = "ZombieRun";
     public const string ZB_ATTACK_ANIMATION = "Z_01_Attack";
+    #endregion
+
+    #region audio
+    [SerializeField] List<soundDrawer> audioContainers = new List<soundDrawer>();
+
+    public soundDrawer GetAudio(string audioName)
+    {
+        return audioContainers.Find(tc => tc.name == audioName);
+    }
+
+    [Serializable]
+    public class soundDrawer
+    {
+        public string name;
+        public AudioClip clip;
+        public float disiredLenght;
+    }
     #endregion
 }

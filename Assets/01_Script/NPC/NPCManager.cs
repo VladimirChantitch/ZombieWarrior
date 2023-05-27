@@ -7,6 +7,7 @@ using stats;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ui;
 using UnityEngine;
 using UnityEngine.AI;
 

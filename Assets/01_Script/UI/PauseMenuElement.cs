@@ -16,11 +16,13 @@ namespace ui.template
 
         public event Action onResume;
         public event Action onMainMenu;
+        public event Action onSave;
         public event Action onQuit;
 
 
         Button btn_resume = null;
         Button btn_mainMenu = null;
+        Button btn_save = null;
         Button btn_quit = null;
 
         public void Init()
@@ -32,6 +34,7 @@ namespace ui.template
         {
             btn_resume = this.Q<Button>("btn_resume");
             btn_mainMenu = this.Q<Button>("btn_mainMenu");
+            btn_save = this.Q<Button>("btn_save");
             btn_quit = this.Q<Button>("btn_quit");
 
             btn_resume.clicked += () =>
@@ -44,6 +47,12 @@ namespace ui.template
             {
                 ButtonAudio.Instance.PlayButtonAudio();
                 onMainMenu?.Invoke();
+            };
+            
+            btn_save.clicked += () =>
+            {
+                ButtonAudio.Instance.PlayButtonAudio();
+                onSave?.Invoke();
             };
 
             btn_quit.clicked += () =>

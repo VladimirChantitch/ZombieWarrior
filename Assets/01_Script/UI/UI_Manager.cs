@@ -42,6 +42,7 @@ namespace ui
         public event Action<GameScene> onStartGame;
         public event Action<GameScene> onBackToMain;
         public event Action onBackToGame;
+        public event Action onSave;
         public event Action<GameState> onLeaderBoard;
         public event Action<string> onPlayerSignIn;
         public event Action<string> onPlayerConnection;
@@ -182,7 +183,7 @@ namespace ui
             };
 
             pauseMenuElement.onMainMenu += () => onBackToMain?.Invoke(GameScene.Start_scene);
-
+            pauseMenuElement.onSave += () => onSave.Invoke();
             pauseMenuElement.onQuit += () => Application.Quit();
         }
     }

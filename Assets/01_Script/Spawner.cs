@@ -1,4 +1,5 @@
 using character;
+using Realms;
 using savesystem.realm;
 using System;
 using System.Collections;
@@ -15,18 +16,23 @@ public class Spawner : MonoBehaviour
     [SerializeField] short max_spawn;
     short currentAmount;
     float time;
-    private UI_Manager ui_Manager;
+    [SerializeField] UI_Manager ui_Manager;
     public bool canSpawn = false;
     private List<Transform> zombiesPosition = new List<Transform>();
-
+    Realm realm;
     public event Action onZombieKilled;
 
     private void Awake()
     {
-        if (ui_Manager == null) ui_Manager = new UI_Manager();
+        var config = new RealmConfiguration
+        {
+            ShouldDeleteIfMigrationNeeded = true,
+        };
+        realm = Realm.GetInstance(config);
+        new ZombiePositionCrud(realm);
     }
 
-        private void Update()
+    private void Update()
     {
         //if (zombiesPosition.Count > 0)
             //Debug.Log(zombiesPosition[0].position);
@@ -34,9 +40,15 @@ public class Spawner : MonoBehaviour
         {
             SpawnAnEnemy();
         }
+        saveZombiesPosition();
+    }
+
+    private void saveZombiesPosition()
+    {
         ui_Manager.onSave += () =>
         {
-            foreach(Transform zombiePos in zombiesPosition){
+            foreach (Transform zombiePos in zombiesPosition)
+            {
                 ZombiePositionCrud.Instance.CreateZombiePosition(zombiePos.position.x, zombiePos.position.y);
             }
         };
@@ -54,6 +66,8 @@ public class Spawner : MonoBehaviour
                 nPCManager.transform.SetParent(Hierarchy, true);
                 nPCManager.onNpcDied += () => HandleAnNpcDeath();
                 zombiesPosition.Add(nPCManager.transform);
+                Debug.Log(zombiesPosition.Count);
+                Debug.Log(zombiesPosition[0].transform.position.x);
             }
         }
     }

@@ -41,6 +41,7 @@ namespace savesystem.realm
 
         public void SetPlayerHealth(string PlayerName, float health)
         {
+           
             if (currentPlayerRealm == null || currentPlayerRealm.Name != PlayerName)
             {
                 realm.Write(() =>
@@ -105,11 +106,16 @@ namespace savesystem.realm
 
         public void CreateNewPlayer(string PlayerName)
         {
-            realm.Write(() =>
+            PlayerRealm playerRealm = GetPlayer(PlayerName);
+            if (playerRealm == null)
             {
-                currentPlayerRealm = new PlayerRealm { Name = PlayerName };
-                realm.Add(currentPlayerRealm);
-            });
+                realm.Write(() =>
+                {
+                    currentPlayerRealm = new PlayerRealm { Name = PlayerName };
+                    realm.Add(currentPlayerRealm);
+                });
+            }
+            
         }
 
         public void RemovePlayer(string PlayerName)

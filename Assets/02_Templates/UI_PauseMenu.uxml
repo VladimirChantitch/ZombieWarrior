@@ -5,6 +5,7 @@
             <ui:VisualElement name="ButtonsBlock" style="flex-grow: 1; width: 100%; align-items: center; color: rgba(0, 0, 0, 0.52);">
                 <ui:Button text="Resume" display-tooltip-when-elided="true" name="btn_resume" class="PauseButtons" />
                 <ui:Button text="Main menu" display-tooltip-when-elided="true" name="btn_mainMenu" class="PauseButtons" />
+                <ui:Button text="Save" display-tooltip-when-elided="true" name="btn_save" class="PauseButtons" />
                 <ui:Button text="Quit" display-tooltip-when-elided="true" name="btn_quit" class="PauseButtons" />
             </ui:VisualElement>
         </ui:VisualElement>

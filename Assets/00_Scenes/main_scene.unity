@@ -1765,6 +1765,7 @@ MonoBehaviour:
   Hierarchy: {fileID: 293216347}
   timer: 4
   max_spawn: 10
+  ui_Manager: {fileID: 867985403}
   canSpawn: 0
 --- !u!1 &404192283
 GameObject:
@@ -3562,6 +3563,7 @@ MonoBehaviour:
   Hierarchy: {fileID: 904151065}
   timer: 4
   max_spawn: 10
+  ui_Manager: {fileID: 867985403}
   canSpawn: 0
 --- !u!1 &905120107
 GameObject:
@@ -4368,6 +4370,7 @@ MonoBehaviour:
   Hierarchy: {fileID: 1046234308}
   timer: 4
   max_spawn: 10
+  ui_Manager: {fileID: 867985403}
   canSpawn: 0
 --- !u!1 &1060382581
 GameObject:
@@ -6538,6 +6541,7 @@ MonoBehaviour:
   Hierarchy: {fileID: 1483124017}
   timer: 4
   max_spawn: 10
+  ui_Manager: {fileID: 867985403}
   canSpawn: 0
 --- !u!1 &1495986944
 GameObject:

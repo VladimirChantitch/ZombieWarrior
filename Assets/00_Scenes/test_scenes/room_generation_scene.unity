@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -334,7 +334,7 @@ MonoBehaviour:
   - {fileID: 1065156667393141452, guid: a1966406d6a1c6b4097f154eb25d0dd4, type: 3}
   - {fileID: 1065156667393141452, guid: b9aa7e2d0e9997d4e88e5111f45d1d0f, type: 3}
   - {fileID: 1065156667393141452, guid: 8478ea5f02d62b94386bf199621b4311, type: 3}
-  - {fileID: 1065156667393141452, guid: 06f4b7ae0d9634e4c96b467eb448343e, type: 3}
+  - {fileID: 1065156667393141452, guid: 2d88ec4a2a9663846ac210593df3ed49, type: 3}
   topRooms:
   - {fileID: 1065156667393141452, guid: 6ff4a09ab2b692b43a2b18894881ca59, type: 3}
   - {fileID: 1065156667393141452, guid: a80f5c9248014ef499aa887f7768ab1f, type: 3}
@@ -343,7 +343,7 @@ MonoBehaviour:
   - {fileID: 1065156667393141452, guid: 1f2e59e1dcff697439c2649954709aa8, type: 3}
   - {fileID: 1065156667393141452, guid: 4227437e16c15d540ad677f7471951ba, type: 3}
   - {fileID: 1065156667393141452, guid: 8478ea5f02d62b94386bf199621b4311, type: 3}
-  - {fileID: 1065156667393141452, guid: 06f4b7ae0d9634e4c96b467eb448343e, type: 3}
+  - {fileID: 1065156667393141452, guid: 2d88ec4a2a9663846ac210593df3ed49, type: 3}
   leftRooms:
   - {fileID: 1065156667393141452, guid: 92cc9b9b37de1434392451517ff09a33, type: 3}
   - {fileID: 1065156667393141452, guid: 6ff4a09ab2b692b43a2b18894881ca59, type: 3}
@@ -352,7 +352,7 @@ MonoBehaviour:
   - {fileID: 1065156667393141452, guid: a1966406d6a1c6b4097f154eb25d0dd4, type: 3}
   - {fileID: 1065156667393141452, guid: 93b73c0ca4a62694094b077348e28a06, type: 3}
   - {fileID: 1065156667393141452, guid: 1f2e59e1dcff697439c2649954709aa8, type: 3}
-  - {fileID: 1065156667393141452, guid: 06f4b7ae0d9634e4c96b467eb448343e, type: 3}
+  - {fileID: 1065156667393141452, guid: 2d88ec4a2a9663846ac210593df3ed49, type: 3}
   rightRooms:
   - {fileID: 1065156667393141452, guid: a80f5c9248014ef499aa887f7768ab1f, type: 3}
   - {fileID: 1065156667393141452, guid: f662abe133bd4b34d8f320735a99d4ad, type: 3}
@@ -361,7 +361,7 @@ MonoBehaviour:
   - {fileID: 1065156667393141452, guid: 93b73c0ca4a62694094b077348e28a06, type: 3}
   - {fileID: 1065156667393141452, guid: 4227437e16c15d540ad677f7471951ba, type: 3}
   - {fileID: 1065156667393141452, guid: 8478ea5f02d62b94386bf199621b4311, type: 3}
-  - {fileID: 1065156667393141452, guid: 06f4b7ae0d9634e4c96b467eb448343e, type: 3}
+  - {fileID: 1065156667393141452, guid: 2d88ec4a2a9663846ac210593df3ed49, type: 3}
   baseRoom: {fileID: 1065156667393141452, guid: 06f4b7ae0d9634e4c96b467eb448343e, type: 3}
 --- !u!4 &294903105
 Transform:

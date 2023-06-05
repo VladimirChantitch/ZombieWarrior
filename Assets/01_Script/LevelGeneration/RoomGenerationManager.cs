@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,6 +18,9 @@ public class RoomGenerationManager : MonoBehaviour
     [Header("Current rooms")]
     private List<GameObject> rooms = new List<GameObject>();
 
+    public event EventHandler<NavMeshUpdater> OnRoomLoaded;
+    [SerializeField] public NavMeshUpdater navMeshUpdater;
+
     #region singleton
     public static RoomGenerationManager Instance { get; private set; }
 
@@ -34,7 +38,7 @@ public class RoomGenerationManager : MonoBehaviour
     }
     #endregion
 
-    private void Start()
+    public void Initialize()
     {
         GameObject firstRoom = Instantiate(baseRoom, Vector3.zero, baseRoom.transform.rotation);
         firstRoom.GetComponent<RoomScript>().Spawn();
@@ -44,6 +48,7 @@ public class RoomGenerationManager : MonoBehaviour
     public void addRoom(GameObject room, Vector3 position)
     {
         rooms.Add(Instantiate(room, position, transform.rotation));
+        OnRoomLoaded?.Invoke(this, navMeshUpdater);
     }
 
     public void ReplaceRoom(RoomScript roomToDestroy, RoomScript roomToConnect, Direction unwantedDirection)

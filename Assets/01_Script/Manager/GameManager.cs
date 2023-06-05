@@ -20,6 +20,7 @@ namespace game_manager
         [SerializeField] PlayerManager playerManager = null;
         [SerializeField] SceneHandler sceneHandler = null;
         [SerializeField] SaveManager saveManager = null;
+        [SerializeField] RoomGenerationManager roomGenerationManager = null;
 
         GameScene sceneState;
         GameState gameState;
@@ -31,9 +32,13 @@ namespace game_manager
             if (playerManager == null) playerManager = FindObjectOfType<PlayerManager>();
             if (sceneHandler == null) sceneHandler = GetComponentInChildren<SceneHandler>();
             if(saveManager == null) saveManager = GetComponentInChildren<SaveManager>();
+            if (roomGenerationManager == null) roomGenerationManager = GetComponentInChildren<RoomGenerationManager>();
+
 
             sceneState = ResourcesManager.Instance.SceneState;
             gameState = ResourcesManager.Instance.GameState;
+
+
 
             Time.timeScale = 1;
         }
@@ -46,6 +51,16 @@ namespace game_manager
             BindSound_Events();
 
             ChangeTemplate();
+
+            if (sceneState == GameScene.Main_scene)
+            {
+                roomGenerationManager.OnRoomLoaded += (sender, args) =>
+                {
+                    args.UpdateNavMesh();
+                };
+
+                roomGenerationManager.Initialize();
+            }
         }
 
         private void HandleCookieData()

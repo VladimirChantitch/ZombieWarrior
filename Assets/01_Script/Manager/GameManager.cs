@@ -38,7 +38,15 @@ namespace game_manager
             sceneState = ResourcesManager.Instance.SceneState;
             gameState = ResourcesManager.Instance.GameState;
 
+            if (sceneState == GameScene.Main_scene)
+            {
 
+                roomGenerationManager.OnRoomLoaded += (sender, args) =>
+                {
+                    Debug.Log("update");
+                    args.UpdateNavMesh();
+                };
+            }
 
             Time.timeScale = 1;
         }
@@ -54,11 +62,6 @@ namespace game_manager
 
             if (sceneState == GameScene.Main_scene)
             {
-                roomGenerationManager.OnRoomLoaded += (sender, args) =>
-                {
-                    args.UpdateNavMesh();
-                };
-
                 roomGenerationManager.Initialize();
             }
         }

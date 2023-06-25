@@ -19,6 +19,8 @@ public class NavMeshUpdater : MonoBehaviour
 
     public void UpdateNavMesh()
     {
+
         surface2D.UpdateNavMesh(surface2D.navMeshData);
+        surface2D.BuildNavMeshAsync();
     }
 }

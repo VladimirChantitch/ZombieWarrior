@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using NavMeshPlus;
+using NavMeshPlus.Components;
 
 public class RoomGenerationManager : MonoBehaviour
 {
@@ -38,10 +40,16 @@ public class RoomGenerationManager : MonoBehaviour
     }
     #endregion
 
+    bool isInit = false;
+
     public void Initialize()
     {
-        GameObject firstRoom = Instantiate(baseRoom, Vector3.zero, baseRoom.transform.rotation);
-        firstRoom.GetComponent<RoomScript>().Spawn();
+        if (isInit == false)
+        {
+            isInit= true;
+            GameObject firstRoom = Instantiate(baseRoom, Vector3.zero, baseRoom.transform.rotation);
+            firstRoom.GetComponent<RoomScript>().Spawn();
+        }
     }
 
     #region roomGeneration

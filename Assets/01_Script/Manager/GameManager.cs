@@ -43,7 +43,6 @@ namespace game_manager
 
                 roomGenerationManager.OnRoomLoaded += (sender, args) =>
                 {
-                    Debug.Log("update");
                     args.UpdateNavMesh();
                 };
             }
@@ -150,7 +149,6 @@ namespace game_manager
         #region Redistribution Methods
         private void LoadScene(GameScene gameScene)
         {
-            Debug.Log(gameScene.ToString());
             sceneHandler.LoadScene(gameScene);
         }
 

@@ -106,18 +106,21 @@ namespace ui
 
         private void InitLooseMenu(LooseMenuElement looseMenuElement)
         {
+            UnityEngine.Cursor.visible = true;
             looseMenuElement.Init();
             looseMenuElement.onBackToMainMenu += () => onBackToMain?.Invoke(GameScene.Start_scene);
         }
 
         private void InitWinMenu(WinMenuElement winMenuElement)
         {
+            UnityEngine.Cursor.visible = true;
             winMenuElement.Init();
             winMenuElement.onBackToMainMenu += () => onBackToMain?.Invoke(GameScene.Start_scene);
         }
 
         private void InitStartMenu(StartMenuElement startMenuElement)
         {
+            UnityEngine.Cursor.visible = true;
             startMenuElement.Init();
 
             startMenuElement.onStartButton += () =>
@@ -139,12 +142,15 @@ namespace ui
 
         private void InitLeaderBoard(LeaderBoardElement leaderBoardElement)
         {
+            UnityEngine.Cursor.visible = true;
             leaderBoardElement.Init();
             leaderBoardElement.onPlayAgain += () => onBackToMain?.Invoke(GameScene.Start_scene);
+        
         }
 
         private void InitSignMenu(SignInElement signInElement)
         {
+            UnityEngine.Cursor.visible = true;
             signInElement.Init();
             signInElement.onCancel += () => {
                 ResourcesManager.Instance.ChangeSubState(GameState.None);
@@ -158,6 +164,7 @@ namespace ui
 
         private void InitConnectionMenu(ConnectionElement connectionElement)
         {
+            UnityEngine.Cursor.visible = true;
             connectionElement.Init(PlayerCrud.Instance.GetAllPlayers());
             connectionElement.onCancel += () => {
                 ResourcesManager.Instance.ChangeSubState(GameState.None);
@@ -168,11 +175,13 @@ namespace ui
 
         private void InitATHElement(ATHElement aTHElement)
         {
+            UnityEngine.Cursor.visible = false;
             aTHElement.Init(PlayerCrud.Instance.GetPlayer(SeesionCookie.currentPlayerName));
         }
 
         private void InitPauseMenuElement(PauseMenuElement pauseMenuElement)
         {
+            UnityEngine.Cursor.visible = true;
             pauseMenuElement.Init();
             pauseMenuElement.onResume += () =>
             {

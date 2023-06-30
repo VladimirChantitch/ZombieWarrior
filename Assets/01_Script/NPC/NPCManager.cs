@@ -2,6 +2,7 @@ using camera;
 using character.ai;
 using character.stat;
 using combat;
+using game_manager;
 using savesystem.realm;
 using stats;
 using System;
@@ -75,7 +76,7 @@ namespace character
                 isDead = true;
                 brain.HandleState(AI_States.Dying);
                 onNpcDied?.Invoke();
-                PlayerCrud.Instance.IncreaseHighScore(SeesionCookie.currentPlayerName, (int)statComponent.GetStatValue(E_Stats.value));
+                PlayerCrud.Instance.IncreaseHighScore(SeesionCookie.currentPlayerName, (int)statComponent.GetStatValue(E_Stats.value))
                 zombiTakeDamageCollider.CloseCollider();
                 spriteRenderer.sortingOrder = -1;
                 audioPlayer.Stop();
